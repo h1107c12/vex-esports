@@ -1,18 +1,16 @@
 function Header() {
   const menus = [
-    { label: "Roster", href: "#roster" },
-    { label: "Partners", href: "#partners" },
-    { label: "Official Uniform", href: "#uniform" },
-    { label: "News & Events", href: "#news" },
+    { label: "Roster", mobileLabel: "Roster", href: "#roster" },
+    { label: "Partners", mobileLabel: "Partners", href: "#partners" },
+    { label: "Official Uniform", mobileLabel: "Uniform", href: "#uniform" },
+    { label: "News & Events", mobileLabel: "News", href: "#news" },
   ]
 
   const handleRosterClick = (e) => {
     e.preventDefault()
 
-    // 1) 애니메이션 즉시 트리거
     window.dispatchEvent(new CustomEvent("restartRosterAnimation"))
 
-    // 2) 바로 스크롤
     const el = document.getElementById("roster")
     if (!el) return
 
@@ -48,6 +46,17 @@ function Header() {
 
         <nav className="header__nav">
           {menus.map((menu) => {
+            const content = (
+              <>
+                <span className="header__label header__label--desktop">
+                  {menu.label}
+                </span>
+                <span className="header__label header__label--mobile">
+                  {menu.mobileLabel}
+                </span>
+              </>
+            )
+
             if (menu.label === "Roster") {
               return (
                 <a
@@ -56,7 +65,7 @@ function Header() {
                   className="header__link"
                   onClick={handleRosterClick}
                 >
-                  {menu.label}
+                  {content}
                 </a>
               )
             }
@@ -69,14 +78,14 @@ function Header() {
                   className="header__link"
                   onClick={scrollPartnersToCenter}
                 >
-                  {menu.label}
+                  {content}
                 </a>
               )
             }
 
             return (
               <a key={menu.label} href={menu.href} className="header__link">
-                {menu.label}
+                {content}
               </a>
             )
           })}

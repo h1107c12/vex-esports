@@ -13,6 +13,7 @@ body {
   background: #02040a;
   color: #ffffff;
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
 }
 
 a {
@@ -71,6 +72,7 @@ button {
   display: flex;
   align-items: center;
   gap: 48px;
+  margin-left: auto;
 }
 
 .header__link {
@@ -79,13 +81,17 @@ button {
   letter-spacing: 0.08em;
   font-weight: 500;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.85);
+  color: rgba(255, 255, 255, 0.85);
   transition: 0.25s;
 }
 
 .header__link:hover {
   color: #8eb6ff;
   text-shadow: 0 0 10px rgba(92, 163, 255, 0.6);
+}
+
+.header__label--mobile {
+  display: none;
 }
 
 /* ================= HERO ================= */
@@ -288,7 +294,6 @@ button {
   padding: 48px 24px 110px;
 }
 
-/* 로고 뒤 빛 퍼짐 */
 .hero__content::after {
   content: "";
   position: absolute;
@@ -377,13 +382,6 @@ button {
 
   50% {
     transform: translateY(-7px) scale(1.008);
-  }
-}
-
-@media (max-width: 640px) {
-  .hero__content::after {
-    width: min(60vw, 360px);
-    height: min(60vw, 360px);
   }
 }
 
@@ -491,7 +489,7 @@ button {
 }
 
 .roster-section__title {
-  font-family: 'Orbitron', sans-serif;
+  font-family: "Orbitron", sans-serif;
   font-size: clamp(42px, 5vw, 72px);
   font-weight: 400;
   letter-spacing: 0.03em;
@@ -508,7 +506,6 @@ button {
   color: rgba(214, 223, 255, 0.72);
 }
 
-/* 이 부분이 제일 중요 */
 .roster-grid {
   width: 100%;
   display: grid;
@@ -517,7 +514,6 @@ button {
   align-items: start;
 }
 
-/* 카드 자체 폭 제한 */
 .roster-card {
   position: relative;
   width: 100%;
@@ -559,7 +555,6 @@ button {
     0 18px 40px rgba(0, 0, 0, 0.42);
 }
 
-/* 이것도 중요: 포스터 비율 강제 */
 .roster-card__image {
   width: 100%;
   aspect-ratio: 3 / 4.9;
@@ -588,8 +583,8 @@ button {
   bottom: 70px;
   z-index: 2;
   text-shadow:
-    0 2px 6px rgba(0,0,0,0.8),
-    0 0 12px rgba(0,0,0,0.4);
+    0 2px 6px rgba(0, 0, 0, 0.8),
+    0 0 12px rgba(0, 0, 0, 0.4);
 }
 
 .roster-card__name {
@@ -717,17 +712,12 @@ button {
   }
 
   .header__nav {
-    gap: 24px;
-    overflow-x: auto;
-    scrollbar-width: none;
-  }
-
-  .header__nav::-webkit-scrollbar {
-    display: none;
+    gap: 18px;
+    margin-left: auto;
   }
 
   .header__link {
-    font-size: 14px;
+    font-size: 13px;
     white-space: nowrap;
   }
 
@@ -755,24 +745,68 @@ button {
 
 @media (max-width: 640px) {
   .header {
-    height: 62px;
+    height: 118px;
+  }
+
+  .header__inner {
+    height: 100%;
+    padding: 8px 12px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+  }
+
+  .header__logo {
+    width: 64px;
+    height: 64px;
+  }
+
+  .header__nav {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+    margin-left: 0;
+  }
+
+  .header__link {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    line-height: 1.1;
+    padding: 4px 2px;
+    white-space: normal;
+  }
+
+  .header__label--desktop {
+    display: none;
+  }
+
+  .header__label--mobile {
+    display: inline;
   }
 
   .hero {
-    padding-top: 62px;
+    padding-top: 118px;
   }
 
   .hero__content {
-    min-height: calc(100vh - 62px);
-    padding: 40px 16px 88px;
+    min-height: calc(100vh - 118px);
+    padding: 32px 16px 88px;
   }
 
   .hero__logo {
-    width: min(280px, 72vw);
+    width: min(250px, 70vw);
   }
 
   .hero__frame--top {
-    top: 116px;
+    top: 150px;
   }
 
   .hero__frame--bottom {
@@ -790,5 +824,38 @@ button {
 
   .roster-section__desc {
     font-size: 14px;
+  }
+}
+
+@media (max-width: 380px) {
+  .header {
+    height: 112px;
+  }
+
+  .header__logo {
+    width: 56px;
+    height: 56px;
+  }
+
+  .header__nav {
+    gap: 4px;
+  }
+
+  .header__link {
+    font-size: 9px;
+    letter-spacing: 0.03em;
+    padding: 3px 1px;
+  }
+
+  .hero {
+    padding-top: 112px;
+  }
+
+  .hero__content {
+    min-height: calc(100vh - 112px);
+  }
+
+  .hero__frame--top {
+    top: 142px;
   }
 }
