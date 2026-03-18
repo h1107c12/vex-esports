@@ -32,8 +32,6 @@ function Header() {
   }
 
   const handlePartnersClick = (e) => {
-    if (!isMobile()) return
-
     e.preventDefault()
 
     const el = document.getElementById("partners")
