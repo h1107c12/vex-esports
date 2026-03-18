@@ -6,21 +6,34 @@ function Header() {
     { label: "News & Events", mobileLabel: "News", href: "#news" },
   ]
 
-  const handleRosterClick = (e) => {
-    e.preventDefault()
+  const isMobile = () => window.innerWidth <= 640
 
-    window.dispatchEvent(new CustomEvent("restartRosterAnimation"))
-
-    const el = document.getElementById("roster")
+  const scrollToSectionForMobile = (id, offset = 0) => {
+    const el = document.getElementById(id)
     if (!el) return
 
-    el.scrollIntoView({
+    const rect = el.getBoundingClientRect()
+    const absoluteTop = window.scrollY + rect.top
+    const targetPosition = absoluteTop - 118 - offset
+
+    window.scrollTo({
+      top: Math.max(targetPosition, 0),
       behavior: "smooth",
-      block: "start",
     })
   }
 
-  const scrollPartnersToCenter = (e) => {
+  const handleRosterClick = (e) => {
+    window.dispatchEvent(new CustomEvent("restartRosterAnimation"))
+
+    if (!isMobile()) return
+
+    e.preventDefault()
+    scrollToSectionForMobile("roster", 10)
+  }
+
+  const handlePartnersClick = (e) => {
+    if (!isMobile()) return
+
     e.preventDefault()
 
     const el = document.getElementById("partners")
@@ -32,9 +45,23 @@ function Header() {
       absoluteTop - window.innerHeight / 2 + rect.height / 2
 
     window.scrollTo({
-      top: targetPosition,
+      top: Math.max(targetPosition, 0),
       behavior: "smooth",
     })
+  }
+
+  const handleUniformClick = (e) => {
+    if (!isMobile()) return
+
+    e.preventDefault()
+    scrollToSectionForMobile("uniform", 18)
+  }
+
+  const handleNewsClick = (e) => {
+    if (!isMobile()) return
+
+    e.preventDefault()
+    scrollToSectionForMobile("news", 18)
   }
 
   return (
@@ -76,7 +103,33 @@ function Header() {
                   key={menu.label}
                   href={menu.href}
                   className="header__link"
-                  onClick={scrollPartnersToCenter}
+                  onClick={handlePartnersClick}
+                >
+                  {content}
+                </a>
+              )
+            }
+
+            if (menu.label === "Official Uniform") {
+              return (
+                <a
+                  key={menu.label}
+                  href={menu.href}
+                  className="header__link"
+                  onClick={handleUniformClick}
+                >
+                  {content}
+                </a>
+              )
+            }
+
+            if (menu.label === "News & Events") {
+              return (
+                <a
+                  key={menu.label}
+                  href={menu.href}
+                  className="header__link"
+                  onClick={handleNewsClick}
                 >
                   {content}
                 </a>
