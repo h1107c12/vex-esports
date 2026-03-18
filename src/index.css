@@ -818,12 +818,102 @@ button {
     bottom: 18px;
   }
 
-  .roster-grid {
-    grid-template-columns: 1fr;
+  .roster-section {
+    padding: 92px 14px 56px;
+    opacity: 1;
+    filter: brightness(1);
+    transform: none;
+    transition: none;
+  }
+
+  .roster-section--active {
+    opacity: 1;
+    filter: brightness(1);
+    transform: none;
+  }
+
+  .roster-section__header {
+    margin-bottom: 28px;
+  }
+
+  .roster-section__title {
+    font-size: 34px;
   }
 
   .roster-section__desc {
     font-size: 14px;
+    margin-top: 10px;
+  }
+
+  .roster-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  .roster-card {
+    transform: none;
+    opacity: 1;
+    transition: none !important;
+  }
+
+  .roster-card--active {
+    transform: none;
+    opacity: 1;
+  }
+
+  .roster-card__poster {
+    border-radius: 12px;
+    transition: none;
+  }
+
+  .roster-card__poster:hover {
+    transform: none;
+    border-color: rgba(95, 132, 255, 0.18);
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.02) inset,
+      0 12px 32px rgba(0, 0, 0, 0.34);
+  }
+
+  .roster-card__image {
+    aspect-ratio: 3 / 4.55;
+  }
+
+  .roster-card__info {
+    left: 14px;
+    right: 14px;
+    bottom: 58px;
+  }
+
+  .roster-card__name {
+    font-size: 15px;
+  }
+
+  .roster-card__realname {
+    font-size: 12px;
+  }
+
+  .roster-card__position {
+    font-size: 11px;
+  }
+
+  .roster-card__divider {
+    left: 14px;
+    right: 14px;
+    bottom: 50px;
+  }
+
+  .roster-card__stream {
+    width: 32px;
+    height: 32px;
+    bottom: 10px;
+    transition: none;
+  }
+
+  .roster-card__stream-icon {
+    width: 15px;
+    height: 15px;
   }
 }
 
@@ -857,5 +947,26 @@ button {
 
   .hero__frame--top {
     top: 142px;
+  }
+
+  .roster-grid {
+    max-width: 272px;
+    gap: 12px;
+  }
+
+  .roster-section {
+    padding: 88px 10px 52px;
+  }
+
+  .roster-card__name {
+    font-size: 14px;
+  }
+
+  .roster-card__realname {
+    font-size: 11px;
+  }
+
+  .roster-card__position {
+    font-size: 10px;
   }
 }

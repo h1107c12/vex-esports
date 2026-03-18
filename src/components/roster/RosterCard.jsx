@@ -12,8 +12,25 @@ function RosterCard({
   replayKey,
 }) {
   const [cardActive, setCardActive] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 640)
+    }
+
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+
+    return () => window.removeEventListener("resize", checkMobile)
+  }, [])
+
+  useEffect(() => {
+    if (isMobile) {
+      setCardActive(true)
+      return
+    }
+
     if (!isVisible) {
       setCardActive(false)
       return
@@ -28,12 +45,12 @@ function RosterCard({
     }, 20)
 
     return () => clearTimeout(timer)
-  }, [isVisible, replayKey])
+  }, [isVisible, replayKey, isMobile])
 
   return (
     <article
       className={`roster-card ${cardActive ? "roster-card--active" : ""}`}
-      style={{ transitionDelay: `${index * 90}ms` }}
+      style={isMobile ? undefined : { transitionDelay: `${index * 90}ms` }}
     >
       <div className="roster-card__poster">
         <img className="roster-card__image" src={image} alt={alt} />

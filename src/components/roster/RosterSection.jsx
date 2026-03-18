@@ -6,10 +6,27 @@ function RosterSection() {
   const sectionRef = useRef(null)
   const [isVisible, setIsVisible] = useState(false)
   const [replayKey, setReplayKey] = useState(0)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 640)
+    }
+
+    checkMobile()
+    window.addEventListener("resize", checkMobile)
+
+    return () => window.removeEventListener("resize", checkMobile)
+  }, [])
 
   useEffect(() => {
     const target = sectionRef.current
     if (!target) return
+
+    if (isMobile) {
+      setIsVisible(true)
+      return
+    }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -21,10 +38,11 @@ function RosterSection() {
     observer.observe(target)
 
     return () => observer.disconnect()
-  }, [])
+  }, [isMobile])
 
   useEffect(() => {
     const handleRestartAnimation = () => {
+      if (isMobile) return
       setReplayKey((prev) => prev + 1)
     }
 
@@ -33,7 +51,7 @@ function RosterSection() {
     return () => {
       window.removeEventListener("restartRosterAnimation", handleRestartAnimation)
     }
-  }, [])
+  }, [isMobile])
 
   return (
     <section
