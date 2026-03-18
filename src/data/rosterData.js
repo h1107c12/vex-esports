@@ -1,0 +1,58 @@
+const rosterData = [
+  {
+    id: 1,
+    image: "/images/roster/lure.png",
+    alt: "Lure roster poster",
+    name: "Lure",
+    realName: "신경민",
+    position: "Attacker",
+    streamLink: "https://www.sooplive.co.kr/station/min060217",
+  },
+  {
+    id: 2,
+    image: "/images/roster/nyeong.png",
+    alt: "Nyeong roster poster",
+    name: "Nyeong",
+    realName: "유대녕",
+    position: "Main Order",
+    streamLink: "https://www.sooplive.co.kr/station/nyeong66",
+  },
+  {
+    id: 3,
+    image: "/images/roster/karwn.png",
+    alt: "Karwn roster poster",
+    name: "Karwn",
+    realName: "김도훈",
+    position: "Anchor/Backup",
+    streamLink: "https://www.sooplive.co.kr/station/k0212kdy1",
+  },
+  {
+    id: 4,
+    image: "/images/roster/roy.png",
+    alt: "ROY roster poster",
+    name: "ROY",
+    realName: "김민길",
+    position: "Sub Order",
+    streamLink: "https://www.sooplive.co.kr/station/alsrlf7445",
+  },
+  {
+    id: 5,
+    image: "/images/roster/2steb4n.png",
+    alt: "2STEB4N roster poster",
+    name: "2STEB4N",
+    realName: "황진영",
+    position: "감독",
+    streamLink: "https://www.sooplive.co.kr/station/hasuerava7",
+  },
+  {
+    id: 6,
+    image: "/images/roster/beom.png",
+    alt: "BEOM roster poster",
+    name: "Beom",
+    realName: "이윤범",
+    position: "Coach",
+    streamLink: "",
+  },
+]
+
+export default rosterData

@@ -1,0 +1,123 @@
+.partners {
+  padding: 84px 0 64px;
+  background: #02040a;
+  overflow: hidden;
+  border-top: 1px solid rgba(90, 118, 255, 0.08);
+  border-bottom: 1px solid rgba(90, 118, 255, 0.08);
+}
+
+.partners__header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.partners__title {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+}
+
+.partners__desc {
+  margin-top: 8px;
+  font-size: 14px;
+  color: rgba(214, 223, 255, 0.72);
+}
+
+.partners__marquee {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.partners__marquee::before,
+.partners__marquee::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 120px;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.partners__marquee::before {
+  left: 0;
+  background: linear-gradient(to right, #02040a 0%, rgba(2, 4, 10, 0) 100%);
+}
+
+.partners__marquee::after {
+  right: 0;
+  background: linear-gradient(to left, #02040a 0%, rgba(2, 4, 10, 0) 100%);
+}
+
+.partners__track {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  will-change: transform;
+}
+
+.partners__item {
+  width: 220px;
+  min-width: 220px;
+  height: 100px;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.partners__logo-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 220px;
+  height: 100px;
+  padding: 0;
+  margin: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.partners__logo {
+  width: 200px;
+  height: 100px;
+  object-fit: contain;
+  opacity: 0.62;
+  filter: grayscale(1);
+  transition:
+    opacity 0.25s ease,
+    filter 0.25s ease,
+    transform 0.25s ease;
+}
+
+.partners__logo:hover {
+  opacity: 0.98;
+  filter: grayscale(0);
+  transform: none;
+}
+
+@media (max-width: 900px) {
+  .partners {
+    padding: 72px 0 56px;
+  }
+
+  .partners__item,
+  .partners__logo-button {
+    width: 140px;
+    min-width: 140px;
+    height: 66px;
+  }
+
+  .partners__logo {
+    width: 116px;
+    height: 40px;
+  }
+
+  .partners__marquee::before,
+  .partners__marquee::after {
+    width: 72px;
+  }
+}

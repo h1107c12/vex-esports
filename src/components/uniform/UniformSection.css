@@ -1,0 +1,317 @@
+.uniform-section {
+  width: 100%;
+  padding: 110px 20px 90px;
+  background:
+    radial-gradient(circle at 20% 78%, rgba(0, 194, 255, 0.16), transparent 24%),
+    radial-gradient(circle at 80% 78%, rgba(165, 76, 255, 0.16), transparent 24%),
+    linear-gradient(180deg, #020611 0%, #030816 100%);
+}
+
+.uniform-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.uniform-header {
+  text-align: center;
+  margin-bottom: 34px;
+}
+
+.uniform-title {
+  margin: 0;
+  font-family: "Orbitron", sans-serif;
+  font-size: clamp(34px, 5vw, 72px);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: linear-gradient(
+    90deg,
+    #87a1ff 0%,
+    #6dafff 35%,
+    #7782ff 68%,
+    #a674ff 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+.uniform-subtitle {
+  margin: 12px 0 0;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 18px;
+}
+
+.uniform-image-wrap {
+  position: relative;
+  width: fit-content;
+  margin: 0 auto;
+  border-radius: 24px;
+  overflow: hidden;
+  transition: box-shadow 0.35s ease, border-color 0.35s ease;
+  border: 1px solid rgba(0, 214, 255, 0.35);
+  box-shadow:
+    0 0 0 1px rgba(0, 214, 255, 0.05) inset,
+    0 0 28px rgba(0, 140, 255, 0.08),
+    0 0 50px rgba(103, 67, 255, 0.08);
+}
+
+.uniform-image-wrap::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 214, 255, 0.95) 0%,
+    rgba(44, 141, 255, 0.88) 35%,
+    rgba(130, 94, 255, 0.9) 68%,
+    rgba(196, 110, 255, 0.95) 100%
+  );
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.55;
+  pointer-events: none;
+  transition: opacity 0.35s ease, filter 0.35s ease;
+}
+
+.uniform-image-wrap::after {
+  content: "";
+  position: absolute;
+  inset: -24px;
+  z-index: -1;
+  border-radius: 34px;
+  background:
+    radial-gradient(circle at 15% 50%, rgba(0, 204, 255, 0.22), transparent 28%),
+    radial-gradient(circle at 85% 50%, rgba(188, 92, 255, 0.22), transparent 28%),
+    radial-gradient(circle at 50% 100%, rgba(79, 150, 255, 0.18), transparent 32%);
+  filter: blur(30px);
+  opacity: 0.55;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  pointer-events: none;
+}
+
+.uniform-image-wrap:hover {
+  box-shadow:
+    0 0 0 1px rgba(0, 214, 255, 0.08) inset,
+    0 0 36px rgba(0, 170, 255, 0.2),
+    0 0 80px rgba(130, 94, 255, 0.18);
+}
+
+.uniform-image-wrap:hover::before {
+  opacity: 1;
+  filter:
+    drop-shadow(0 0 10px rgba(0, 214, 255, 0.45))
+    drop-shadow(0 0 16px rgba(175, 100, 255, 0.35));
+}
+
+.uniform-image-wrap:hover::after {
+  opacity: 1;
+  transform: scale(1.03);
+}
+
+.uniform-image {
+  display: block;
+  width: 100%;
+  max-width: 1050px;
+  height: auto;
+  border-radius: 24px;
+}
+
+.uniform-btn-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 34px;
+}
+
+.uniform-consult-btn {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  min-width: 198px;
+  height: 60px;
+  padding: 0 30px;
+  border-radius: 999px;
+
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: linear-gradient(
+    90deg,
+    rgba(25, 200, 255, 0.95) 0%,
+    rgba(167, 87, 255, 0.95) 100%
+  );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.05),
+    0 10px 24px rgba(21, 145, 255, 0.22),
+    0 0 22px rgba(165, 92, 255, 0.14);
+
+  transition:
+    box-shadow 0.28s ease,
+    filter 0.28s ease,
+    border-color 0.28s ease,
+    background 0.28s ease;
+}
+
+.uniform-consult-btn::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.16),
+    rgba(255, 255, 255, 0.02) 45%,
+    rgba(255, 255, 255, 0.04) 100%
+  );
+  z-index: -1;
+}
+
+.uniform-consult-btn::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  z-index: -2;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 217, 255, 0.35),
+    rgba(177, 86, 255, 0.35)
+  );
+  filter: blur(18px);
+  opacity: 0.55;
+  transition: opacity 0.28s ease, filter 0.28s ease;
+}
+
+.uniform-consult-btn__shine {
+  position: absolute;
+  top: 0;
+  left: -35%;
+  width: 32%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.12) 45%,
+    rgba(255, 255, 255, 0.28) 50%,
+    rgba(255, 255, 255, 0.12) 55%,
+    transparent 100%
+  );
+  transform: skewX(-24deg);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.uniform-consult-btn:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: linear-gradient(
+    90deg,
+    rgba(35, 208, 255, 1) 0%,
+    rgba(177, 92, 255, 1) 100%
+  );
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.06),
+    0 14px 30px rgba(21, 145, 255, 0.28),
+    0 0 28px rgba(165, 92, 255, 0.2);
+  filter: brightness(1.03);
+}
+
+.uniform-consult-btn:hover::after {
+  opacity: 0.9;
+  filter: blur(22px);
+}
+
+.uniform-consult-btn:hover .uniform-consult-btn__shine {
+  opacity: 1;
+  animation: uniformBtnShine 0.9s ease;
+}
+
+.uniform-consult-btn:active {
+  filter: brightness(0.98);
+}
+
+.uniform-consult-icon,
+.uniform-consult-text {
+  position: relative;
+  z-index: 1;
+}
+
+.uniform-consult-icon {
+  font-size: 22px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.18));
+}
+
+.uniform-consult-text {
+  line-height: 1;
+}
+
+@keyframes uniformBtnShine {
+  0% {
+    left: -35%;
+  }
+  100% {
+    left: 120%;
+  }
+}
+
+@media (max-width: 1200px) {
+  .uniform-image {
+    max-width: 960px;
+  }
+}
+
+@media (max-width: 768px) {
+  .uniform-section {
+    padding: 90px 16px 72px;
+  }
+
+  .uniform-header {
+    margin-bottom: 24px;
+  }
+
+  .uniform-subtitle {
+    font-size: 15px;
+  }
+
+  .uniform-image-wrap,
+  .uniform-image {
+    border-radius: 18px;
+  }
+
+  .uniform-image-wrap::before {
+    border-radius: 18px;
+  }
+
+  .uniform-consult-btn {
+    min-width: 162px;
+    height: 52px;
+    padding: 0 22px;
+    font-size: 15px;
+    gap: 8px;
+  }
+
+  .uniform-consult-icon {
+    font-size: 16px;
+  }
+}
