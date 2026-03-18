@@ -17,7 +17,8 @@ function Partners() {
     const track = trackRef.current
     if (!track) return
 
-    const normalSpeed = 30
+    const isMobile = window.innerWidth <= 640
+    const normalSpeed = isMobile ? 58 : 30
     const hoverSpeed = 12
 
     const animate = (time) => {
@@ -34,7 +35,11 @@ function Partners() {
       lastTimeRef.current = time
       delta = Math.min(delta, 0.05)
 
-      const currentSpeed = isHoveringRef.current ? hoverSpeed : normalSpeed
+      const currentSpeed = isMobile
+        ? normalSpeed
+        : isHoveringRef.current
+        ? hoverSpeed
+        : normalSpeed
 
       offsetRef.current -= currentSpeed * delta
       track.style.transform = `translate3d(${offsetRef.current}px, 0, 0)`
@@ -73,10 +78,12 @@ function Partners() {
   }, [selectedPartner])
 
   const handleMarqueeMouseEnter = () => {
+    if (window.innerWidth <= 640) return
     isHoveringRef.current = true
   }
 
   const handleMarqueeMouseLeave = () => {
+    if (window.innerWidth <= 640) return
     isHoveringRef.current = false
   }
 
