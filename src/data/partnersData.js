@@ -68,7 +68,7 @@ const partnersData = [
     id: 4,
     logo: p4,
     name: "Partner 4",
-    website: "https://example.com",
+    website: "https://jchyun.com/",
     logoWidth: 270,
     logoHeight: 50,
     details: [
