@@ -683,11 +683,11 @@ button {
 
 @media (min-width: 641px) {
   .roster-section__inner {
-    max-width: 1340px;
+    max-width: 1400px;
   }
 
   .roster-grid {
-    grid-template-columns: repeat(4, minmax(270px, 1fr));
+    grid-template-columns: repeat(4, minmax(280px, 1fr));
     gap: 24px;
   }
 }
