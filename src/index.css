@@ -683,12 +683,16 @@ button {
 
 @media (min-width: 641px) {
   .roster-section__inner {
-    max-width: 1400px;
+    max-width: 1260px;
   }
 
   .roster-grid {
-    grid-template-columns: repeat(4, minmax(280px, 1fr));
+    grid-template-columns: repeat(4, minmax(255px, 1fr));
     gap: 24px;
+  }
+
+  .roster-card__image {
+    aspect-ratio: 3.4 / 4.9;
   }
 }
 
