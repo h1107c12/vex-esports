@@ -57,7 +57,7 @@ function RosterSection() {
     <section
       id="roster"
       ref={sectionRef}
-      className={`roster-section ${isVisible ? "roster-section--active" : ""}`}
+      className="roster-section"
     >
       <div className="roster-section__inner">
         <div className="roster-section__header">

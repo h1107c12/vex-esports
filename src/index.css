@@ -462,19 +462,6 @@ button {
   background:
     radial-gradient(circle at top center, rgba(50, 82, 214, 0.14) 0%, rgba(2, 4, 10, 0) 34%),
     linear-gradient(180deg, #02040a 0%, #030611 38%, #02040a 100%);
-  opacity: 0.82;
-  filter: brightness(0.84);
-  transform: translateY(44px);
-  transition:
-    opacity 0.8s ease,
-    filter 0.8s ease,
-    transform 0.9s ease;
-}
-
-.roster-section--active {
-  opacity: 1;
-  filter: brightness(1);
-  transform: translateY(0);
 }
 
 .roster-section__inner {
@@ -819,17 +806,7 @@ button {
   }
 
   .roster-section {
-    padding: 92px 14px 56px;
-    opacity: 1;
-    filter: brightness(1);
-    transform: none;
-    transition: none;
-  }
-
-  .roster-section--active {
-    opacity: 1;
-    filter: brightness(1);
-    transform: none;
+  padding: 92px 14px 56px;
   }
 
   .roster-section__header {
