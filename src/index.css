@@ -681,6 +681,17 @@ button {
 
 /* ================= RESPONSIVE ================= */
 
+@media (min-width: 641px) {
+  .roster-section__inner {
+    max-width: 1260px;
+  }
+
+  .roster-grid {
+    grid-template-columns: repeat(4, minmax(255px, 1fr));
+    gap: 24px;
+  }
+}
+
 @media (max-width: 1100px) {
   .roster-grid {
     grid-template-columns: repeat(3, minmax(220px, 1fr));
@@ -806,7 +817,7 @@ button {
   }
 
   .roster-section {
-  padding: 92px 14px 56px;
+    padding: 92px 14px 56px;
   }
 
   .roster-section__header {
