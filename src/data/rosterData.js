@@ -40,7 +40,7 @@ const rosterData = [
     image: "/images/roster/2steb4n.png",
     alt: "2STEB4N roster poster",
     name: "2STEB4N",
-    realName: "황진영",
+    realName: "황진형",
     position: "감독",
     streamLink: "https://www.sooplive.co.kr/station/hasuerava7",
   },
