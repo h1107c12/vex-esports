@@ -120,10 +120,6 @@ function HeroSection() {
           alt="VEX Esports"
         />
       </div>
-
-      <a href="#roster" className="hero__scroll" aria-label="Scroll to roster">
-        ˅
-      </a>
     </section>
   )
 }

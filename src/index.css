@@ -412,17 +412,6 @@ button {
   bottom: 80px;
 }
 
-.hero__scroll {
-  position: absolute;
-  left: 50%;
-  bottom: 28px;
-  transform: translateX(-50%);
-  font-size: 36px;
-  color: rgba(190, 220, 255, 0.62);
-  z-index: 3;
-  animation: arrowFloat 1.8s infinite;
-}
-
 @keyframes arrowFloat {
   0%,
   100% {
@@ -813,11 +802,6 @@ button {
 
   .hero__frame--bottom {
     bottom: 64px;
-  }
-
-  .hero__scroll {
-    font-size: 30px;
-    bottom: 18px;
   }
 
   .roster-section {
