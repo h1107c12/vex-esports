@@ -1,12 +1,12 @@
 const rosterData = [
   {
-    id: 1,
-    image: "/images/roster/lure.png",
-    alt: "Lure roster poster",
-    name: "Lure",
-    realName: "신경민",
-    position: "Attacker",
-    streamLink: "https://www.sooplive.co.kr/station/min060217",
+    id: 4,
+    image: "/images/roster/roy.png",
+    alt: "ROY roster poster",
+    name: "ROY",
+    realName: "김민길",
+    position: "Leader/Sub Order",
+    streamLink: "https://www.sooplive.co.kr/station/alsrlf7445",
   },
   {
     id: 2,
@@ -18,6 +18,15 @@ const rosterData = [
     streamLink: "https://www.sooplive.co.kr/station/nyeong66",
   },
   {
+    id: 1,
+    image: "/images/roster/lure.png",
+    alt: "Lure roster poster",
+    name: "Lure",
+    realName: "신경민",
+    position: "Attacker",
+    streamLink: "https://www.sooplive.co.kr/station/min060217",
+  },
+  {
     id: 3,
     image: "/images/roster/karwn.png",
     alt: "Karwn roster poster",
@@ -25,15 +34,6 @@ const rosterData = [
     realName: "김도훈",
     position: "Anchor/Backup",
     streamLink: "https://www.sooplive.co.kr/station/k0212kdy1",
-  },
-  {
-    id: 4,
-    image: "/images/roster/roy.png",
-    alt: "ROY roster poster",
-    name: "ROY",
-    realName: "김민길",
-    position: "Sub Order",
-    streamLink: "https://www.sooplive.co.kr/station/alsrlf7445",
   },
   {
     id: 5,
