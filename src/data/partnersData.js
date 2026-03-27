@@ -38,6 +38,8 @@ const partnersData = [
     id: 2,
     logo: p2,
     name: "Partner 2",
+    website:
+      "https://pineinfo.co.kr/",
     logoWidth: 200,
     logoHeight: 156,
     details: [
