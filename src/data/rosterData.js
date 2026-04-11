@@ -31,7 +31,7 @@ const rosterData = [
     image: "/images/roster/karwn.png",
     alt: "Karwn roster poster",
     name: "Karwn",
-    realName: "김도훈",
+    realName: "김도윤",
     position: "Anchor/Backup",
     streamLink: "https://www.sooplive.co.kr/station/k0212kdy1",
   },
