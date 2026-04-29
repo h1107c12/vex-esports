@@ -736,43 +736,45 @@ button {
 
 @media (max-width: 640px) {
   .header {
-    height: 118px;
+    height: 102px;
   }
 
   .header__inner {
     height: 100%;
-    padding: 8px 12px 10px;
+    padding: 6px 12px 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 6px;
+    gap: 4px;
   }
 
   .header__logo {
-    width: 64px;
-    height: 64px;
+    width: 50px;
+    height: 50px;
   }
 
   .header__nav {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 6px;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 5px;
     margin-left: 0;
   }
 
   .header__link {
     min-width: 0;
+    height: 26px;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    font-size: 10px;
-    letter-spacing: 0.04em;
-    line-height: 1.1;
-    padding: 4px 2px;
-    white-space: normal;
+    font-size: 9px;
+    letter-spacing: 0.03em;
+    line-height: 1;
+    padding: 0 2px;
+    white-space: nowrap;
+    border-radius: 4px;
   }
 
   .header__label--desktop {
@@ -784,11 +786,11 @@ button {
   }
 
   .hero {
-    padding-top: 118px;
+    padding-top: 102px;
   }
 
   .hero__content {
-    min-height: calc(100vh - 118px);
+    min-height: calc(100vh - 102px);
     padding: 32px 16px 88px;
   }
 

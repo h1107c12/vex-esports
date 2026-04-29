@@ -3,6 +3,7 @@ import HeroSection from "../components/hero/HeroSection"
 import RosterSection from "../components/roster/RosterSection"
 import Partners from "../components/partners/Partners"
 import UniformSection from "../components/uniform/UniformSection"
+import VidSection from "../components/vid/VidSection"
 import NewsSection from "../components/news/NewsSection"
 import Footer from "../components/common/Footer"
 
@@ -15,6 +16,7 @@ function Home() {
         <RosterSection />
         <Partners />
         <UniformSection />
+        <VidSection />
         <NewsSection />
         <Footer />
       </main>

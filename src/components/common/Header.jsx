@@ -3,6 +3,7 @@ function Header() {
     { label: "Roster", mobileLabel: "Roster", href: "#roster" },
     { label: "Partners", mobileLabel: "Partners", href: "#partners" },
     { label: "Official Uniform", mobileLabel: "Uniform", href: "#uniform" },
+    { label: "VID", mobileLabel: "VID", href: "#vid" },
     { label: "News & Events", mobileLabel: "News", href: "#news" },
   ]
 
@@ -14,7 +15,7 @@ function Header() {
 
     const rect = el.getBoundingClientRect()
     const absoluteTop = window.scrollY + rect.top
-    const targetPosition = absoluteTop - 118 - offset
+    const targetPosition = absoluteTop - 102 - offset
 
     window.scrollTo({
       top: Math.max(targetPosition, 0),
@@ -55,6 +56,13 @@ function Header() {
     scrollToSectionForMobile("uniform", 18)
   }
 
+  const handleVidClick = (e) => {
+    if (!isMobile()) return
+
+    e.preventDefault()
+    scrollToSectionForMobile("vid", 18)
+  }
+
   const handleNewsClick = (e) => {
     if (!isMobile()) return
 
@@ -84,12 +92,7 @@ function Header() {
 
             if (menu.label === "Roster") {
               return (
-                <a
-                  key={menu.label}
-                  href={menu.href}
-                  className="header__link"
-                  onClick={handleRosterClick}
-                >
+                <a key={menu.label} href={menu.href} className="header__link" onClick={handleRosterClick}>
                   {content}
                 </a>
               )
@@ -97,12 +100,7 @@ function Header() {
 
             if (menu.label === "Partners") {
               return (
-                <a
-                  key={menu.label}
-                  href={menu.href}
-                  className="header__link"
-                  onClick={handlePartnersClick}
-                >
+                <a key={menu.label} href={menu.href} className="header__link" onClick={handlePartnersClick}>
                   {content}
                 </a>
               )
@@ -110,12 +108,15 @@ function Header() {
 
             if (menu.label === "Official Uniform") {
               return (
-                <a
-                  key={menu.label}
-                  href={menu.href}
-                  className="header__link"
-                  onClick={handleUniformClick}
-                >
+                <a key={menu.label} href={menu.href} className="header__link" onClick={handleUniformClick}>
+                  {content}
+                </a>
+              )
+            }
+
+            if (menu.label === "VID") {
+              return (
+                <a key={menu.label} href={menu.href} className="header__link" onClick={handleVidClick}>
                   {content}
                 </a>
               )
@@ -123,12 +124,7 @@ function Header() {
 
             if (menu.label === "News & Events") {
               return (
-                <a
-                  key={menu.label}
-                  href={menu.href}
-                  className="header__link"
-                  onClick={handleNewsClick}
-                >
+                <a key={menu.label} href={menu.href} className="header__link" onClick={handleNewsClick}>
                   {content}
                 </a>
               )
