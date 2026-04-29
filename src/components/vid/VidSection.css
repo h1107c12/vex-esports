@@ -47,26 +47,22 @@
   overflow: hidden;
   background: rgba(12, 16, 32, 0.82);
   border: 1px solid rgba(118, 160, 255, 0.16);
-  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.36);
-  opacity: 0.55;
-  transform: scale(0.96);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.28);
+  opacity: 1;
+  transform: translateZ(0);
   transition:
-    flex 0.45s ease,
-    opacity 0.35s ease,
-    transform 0.35s ease,
-    border-color 0.35s ease,
-    box-shadow 0.35s ease;
+    transform 0.28s ease,
+    border-color 0.28s ease,
+    box-shadow 0.28s ease;
+  will-change: transform;
 }
 
 .vid-card:hover {
-  flex: 1.75;
-  opacity: 1;
-  transform: scale(1);
+  transform: translateY(-10px) scale(1.025);
   border-color: rgba(116, 198, 255, 0.55);
   box-shadow:
-    0 0 22px rgba(83, 183, 255, 0.2),
-    0 0 46px rgba(127, 98, 255, 0.16),
-    0 22px 50px rgba(0, 0, 0, 0.46);
+    0 0 18px rgba(83, 183, 255, 0.16),
+    0 16px 36px rgba(0, 0, 0, 0.38);
 }
 
 .vid-card__video {

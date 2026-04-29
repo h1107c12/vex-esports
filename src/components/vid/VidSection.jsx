@@ -13,7 +13,7 @@ const videos = [
   },
   {
     title: "VEX OFFICIAL VID 03",
-    desc: "VEX Esports 공식 영상",
+    desc: "VEX E-SPORTS 공식 스폰서 영상",
     videoId: "TV_-0JGcNCY",
   },
 ]
