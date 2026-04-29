@@ -2,12 +2,12 @@ import "./VidSection.css"
 
 const videos = [
   {
-    title: "VEX OFFICIAL VID 02",
+    title: "VEX OFFICIAL VID 01",
     desc: "VEX E-SPORTS 로스터 소개",
     videoId: "FVvfB32RsAM",
   },
   {
-    title: "VEX OFFICIAL VID 01",
+    title: "VEX OFFICIAL VID 02",
     desc: "VEX E-SPORTS 공식 창단",
     videoId: "mAxPqc8X3Gk",
   },
@@ -15,6 +15,11 @@ const videos = [
     title: "VEX OFFICIAL VID 03",
     desc: "VEX E-SPORTS 공식 스폰서 영상",
     videoId: "TV_-0JGcNCY",
+  },
+  {
+    title: "VEX OFFICIAL VID 04",
+    desc: "VEX E-SPORTS 클랜컵 홍보 영상",
+    videoId: "lvD-m5AiY0s",
   },
 ]
 
