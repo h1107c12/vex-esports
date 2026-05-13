@@ -119,6 +119,15 @@ function HeroSection() {
           src="/images/hero/vex-hero-logo.png"
           alt="VEX Esports"
         />
+
+        <a
+          href="https://vex-academy.vercel.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hero__academy-button"
+        >
+          VEX ACADEMY
+        </a>
       </div>
     </section>
   )

@@ -948,3 +948,48 @@ button {
     font-size: 10px;
   }
 }
+
+/* ================= HERO ACADEMY BUTTON ================= */
+
+.hero__content {
+  flex-direction: column;
+}
+
+.hero__academy-button {
+  position: relative;
+  z-index: 2;
+  margin-top: 42px;
+  padding: 15px 42px;
+  border: 1px solid rgba(127, 214, 255, 0.58);
+  border-radius: 999px;
+  background:
+    linear-gradient(90deg, rgba(0, 217, 255, 0.14), rgba(143, 88, 255, 0.16)),
+    rgba(5, 14, 42, 0.58);
+  color: #e7f4ff;
+  font-family: "Orbitron", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  box-shadow:
+    0 0 18px rgba(0, 190, 255, 0.26),
+    0 0 42px rgba(120, 80, 255, 0.16),
+    inset 0 0 18px rgba(255, 255, 255, 0.04);
+  transition: 0.25s ease;
+}
+
+.hero__academy-button:hover {
+  transform: translateY(-3px);
+  border-color: rgba(160, 230, 255, 0.95);
+  box-shadow:
+    0 0 26px rgba(0, 204, 255, 0.46),
+    0 0 70px rgba(150, 80, 255, 0.28);
+}
+
+@media (max-width: 640px) {
+  .hero__academy-button {
+    margin-top: 30px;
+    padding: 13px 30px;
+    font-size: 11px;
+  }
+}
