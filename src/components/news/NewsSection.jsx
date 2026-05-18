@@ -3,6 +3,8 @@ import "./NewsSection.css"
 import { FaInstagram, FaXTwitter } from "react-icons/fa6"
 import { supabase } from "../../lib/supabase"
 
+const ADMIN_PASSWORD = "vex2026"
+
 const socialLinks = [
   {
     id: "instagram",
@@ -32,6 +34,19 @@ export default function NewsSection() {
     href: "",
   })
 
+  const enableAdminMode = () => {
+    const password = window.prompt("관리자 비밀번호")
+
+    if (password !== ADMIN_PASSWORD) {
+      alert("비밀번호가 틀렸습니다.")
+      return
+    }
+
+    setAdminMode(true)
+    document.body.classList.add("vex-admin-mode")
+    window.dispatchEvent(new Event("vex-admin-mode-change"))
+  }
+
   const fetchArticles = async () => {
     const { data, error } = await supabase
       .from("news_articles")
@@ -48,17 +63,55 @@ export default function NewsSection() {
 
   useEffect(() => {
     fetchArticles()
+  }, [])
 
-    const checkAdminMode = () => {
+  useEffect(() => {
+    const syncAdminMode = () => {
       setAdminMode(document.body.classList.contains("vex-admin-mode"))
     }
 
-    checkAdminMode()
+    syncAdminMode()
 
-    window.addEventListener("vex-admin-mode-change", checkAdminMode)
+    window.addEventListener("vex-admin-mode-change", syncAdminMode)
 
     return () => {
-      window.removeEventListener("vex-admin-mode-change", checkAdminMode)
+      window.removeEventListener("vex-admin-mode-change", syncAdminMode)
+    }
+  }, [])
+
+  useEffect(() => {
+    const command = [
+      "ArrowUp",
+      "ArrowUp",
+      "ArrowDown",
+      "ArrowDown",
+      "ArrowLeft",
+      "ArrowRight",
+      "ArrowLeft",
+      "ArrowRight",
+    ]
+
+    let index = 0
+
+    const handleKeyDown = (e) => {
+      if (e.key === command[index]) {
+        index += 1
+
+        if (index === command.length) {
+          enableAdminMode()
+          index = 0
+        }
+
+        return
+      }
+
+      index = 0
+    }
+
+    window.addEventListener("keydown", handleKeyDown)
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown)
     }
   }, [])
 
@@ -180,18 +233,13 @@ export default function NewsSection() {
               />
             </div>
 
-            <button type="submit">
-              기사 등록
-            </button>
+            <button type="submit">기사 등록</button>
           </form>
         )}
 
         <div className="article-grid">
           {articles.map((article) => (
-            <article
-              key={article.id}
-              className="article-card"
-            >
+            <article key={article.id} className="article-card">
               <a
                 href={article.href}
                 target="_blank"
