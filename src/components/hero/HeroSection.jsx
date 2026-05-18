@@ -121,13 +121,12 @@ function HeroSection() {
         />
 
         <a
-          href="https://vex-academy.vercel.app/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hero__academy-button"
-        >
-          VEX ACADEMY
-        </a>
+  href="https://vex-academy.vercel.app/"
+  rel="noopener noreferrer"
+  className="hero__academy-button"
+>
+  VEX ACADEMY
+</a>
       </div>
     </section>
   )
