@@ -3,6 +3,13 @@ function Header() {
     { label: "Roster", mobileLabel: "Roster", href: "#roster" },
     { label: "Partners", mobileLabel: "Partners", href: "#partners" },
     { label: "Official Uniform", mobileLabel: "Uniform", href: "#uniform" },
+
+    {
+      label: "ACADEMY",
+      mobileLabel: "ACADEMY",
+      href: "https://vex-academy.vercel.app/",
+    },
+
     { label: "VIDEO", mobileLabel: "VIDEO", href: "#vid" },
     { label: "News & Events", mobileLabel: "News", href: "#news" },
   ]
@@ -84,6 +91,7 @@ function Header() {
                 <span className="header__label header__label--desktop">
                   {menu.label}
                 </span>
+
                 <span className="header__label header__label--mobile">
                   {menu.mobileLabel}
                 </span>
@@ -92,7 +100,12 @@ function Header() {
 
             if (menu.label === "Roster") {
               return (
-                <a key={menu.label} href={menu.href} className="header__link" onClick={handleRosterClick}>
+                <a
+                  key={menu.label}
+                  href={menu.href}
+                  className="header__link"
+                  onClick={handleRosterClick}
+                >
                   {content}
                 </a>
               )
@@ -100,7 +113,12 @@ function Header() {
 
             if (menu.label === "Partners") {
               return (
-                <a key={menu.label} href={menu.href} className="header__link" onClick={handlePartnersClick}>
+                <a
+                  key={menu.label}
+                  href={menu.href}
+                  className="header__link"
+                  onClick={handlePartnersClick}
+                >
                   {content}
                 </a>
               )
@@ -108,15 +126,25 @@ function Header() {
 
             if (menu.label === "Official Uniform") {
               return (
-                <a key={menu.label} href={menu.href} className="header__link" onClick={handleUniformClick}>
+                <a
+                  key={menu.label}
+                  href={menu.href}
+                  className="header__link"
+                  onClick={handleUniformClick}
+                >
                   {content}
                 </a>
               )
             }
 
-            if (menu.label === "VID") {
+            if (menu.label === "VIDEO") {
               return (
-                <a key={menu.label} href={menu.href} className="header__link" onClick={handleVidClick}>
+                <a
+                  key={menu.label}
+                  href={menu.href}
+                  className="header__link"
+                  onClick={handleVidClick}
+                >
                   {content}
                 </a>
               )
@@ -124,14 +152,23 @@ function Header() {
 
             if (menu.label === "News & Events") {
               return (
-                <a key={menu.label} href={menu.href} className="header__link" onClick={handleNewsClick}>
+                <a
+                  key={menu.label}
+                  href={menu.href}
+                  className="header__link"
+                  onClick={handleNewsClick}
+                >
                   {content}
                 </a>
               )
             }
 
             return (
-              <a key={menu.label} href={menu.href} className="header__link">
+              <a
+                key={menu.label}
+                href={menu.href}
+                className="header__link"
+              >
                 {content}
               </a>
             )
