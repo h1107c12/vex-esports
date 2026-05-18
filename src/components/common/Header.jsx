@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useState } from "react"
 import "./Header.css"
 
 const ADMIN_PASSWORD = "vex2026"
@@ -19,19 +19,8 @@ const menus = [
 function Header() {
   const [adminMode, setAdminMode] = useState(false)
   const [tapCount, setTapCount] = useState(0)
-  const keyIndexRef = useRef(0)
 
-  const isMobile = () => window.innerWidth <= 640
-
-  const setAdminOn = () => {
-    document.body.classList.add("vex-admin-mode")
-    setAdminMode(true)
-    window.dispatchEvent(new Event("vex-admin-mode-change"))
-  }
-
-  const requestAdminMode = () => {
-    if (document.body.classList.contains("vex-admin-mode")) return
-
+  const enableAdminMode = () => {
     const password = window.prompt("ADMIN PASSWORD")
 
     if (password !== ADMIN_PASSWORD) {
@@ -39,76 +28,27 @@ function Header() {
       return
     }
 
-    setAdminOn()
+    document.body.classList.add("vex-admin-mode")
+    window.dispatchEvent(new Event("vex-admin-mode-change"))
   }
 
-  const scrollToTop = (e) => {
+  const scrollToSection = (e, sectionId) => {
     e.preventDefault()
 
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    })
-
-    if (!isMobile()) return
-
-    const nextTapCount = tapCount + 1
-
-    if (nextTapCount >= 10) {
-      requestAdminMode()
-      setTapCount(0)
-      return
-    }
-
-    setTapCount(nextTapCount)
-
-    window.setTimeout(() => {
-      setTapCount(0)
-    }, 3500)
-  }
-
-  const scrollToSection = (id, offset = 0) => {
-    const el = document.getElementById(id)
+    const el = document.getElementById(sectionId)
     if (!el) return
 
+    const offset = window.innerWidth <= 640 ? 118 : 90
     const rect = el.getBoundingClientRect()
-    const absoluteTop = window.scrollY + rect.top
-    const targetPosition = absoluteTop - offset
+    const top = window.scrollY + rect.top - offset
 
     window.scrollTo({
-      top: Math.max(targetPosition, 0),
+      top: Math.max(top, 0),
       behavior: "smooth",
     })
   }
 
-  const scrollToSectionForMobile = (id, offset = 0) => {
-    const el = document.getElementById(id)
-    if (!el) return
-
-    const rect = el.getBoundingClientRect()
-    const absoluteTop = window.scrollY + rect.top
-    const targetPosition = absoluteTop - 102 - offset
-
-    window.scrollTo({
-      top: Math.max(targetPosition, 0),
-      behavior: "smooth",
-    })
-  }
-
-  const handleRosterClick = (e) => {
-    e.preventDefault()
-
-    window.dispatchEvent(new CustomEvent("restartRosterAnimation"))
-
-    if (isMobile()) {
-      scrollToSectionForMobile("roster", 10)
-      return
-    }
-
-    scrollToSection("roster", 90)
-  }
-
-  const handlePartnersClick = (e) => {
+  const scrollToPartners = (e) => {
     e.preventDefault()
 
     const el = document.getElementById("partners")
@@ -125,37 +65,29 @@ function Header() {
     })
   }
 
-  const handleUniformClick = (e) => {
+  const handleLogoTap = (e) => {
     e.preventDefault()
 
-    if (isMobile()) {
-      scrollToSectionForMobile("uniform", 18)
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    })
+
+    if (window.innerWidth > 768) return
+
+    const nextTapCount = tapCount + 1
+
+    if (nextTapCount >= 10) {
+      enableAdminMode()
+      setTapCount(0)
       return
     }
 
-    scrollToSection("uniform", 90)
-  }
+    setTapCount(nextTapCount)
 
-  const handleVidClick = (e) => {
-    e.preventDefault()
-
-    if (isMobile()) {
-      scrollToSectionForMobile("vid", 18)
-      return
-    }
-
-    scrollToSection("vid", 90)
-  }
-
-  const handleNewsClick = (e) => {
-    e.preventDefault()
-
-    if (isMobile()) {
-      scrollToSectionForMobile("news", 18)
-      return
-    }
-
-    scrollToSection("news", 90)
+    window.setTimeout(() => {
+      setTapCount(0)
+    }, 3500)
   }
 
   useEffect(() => {
@@ -170,23 +102,23 @@ function Header() {
       "ArrowRight",
     ]
 
+    let index = 0
+
     const handleKeyDown = (e) => {
-      if (isMobile()) return
+      if (window.innerWidth <= 768) return
 
-      const currentKey = sequence[keyIndexRef.current]
+      if (e.key === sequence[index]) {
+        index += 1
 
-      if (e.key === currentKey || e.code === currentKey) {
-        keyIndexRef.current += 1
-
-        if (keyIndexRef.current >= sequence.length) {
-          keyIndexRef.current = 0
-          requestAdminMode()
+        if (index >= sequence.length) {
+          enableAdminMode()
+          index = 0
         }
 
         return
       }
 
-      keyIndexRef.current = e.key === sequence[0] ? 1 : 0
+      index = 0
     }
 
     window.addEventListener("keydown", handleKeyDown)
@@ -210,81 +142,88 @@ function Header() {
     }
   }, [])
 
-  const renderMenu = (menu) => {
-    const content = (
-      <>
-        <span className="header__label header__label--desktop">
-          {menu.label}
-        </span>
-
-        <span className="header__label header__label--mobile">
-          {menu.mobileLabel}
-        </span>
-      </>
-    )
-
-    if (menu.label === "Roster") {
-      return (
-        <a key={menu.label} href="/" className="header__link" onClick={handleRosterClick}>
-          {content}
-        </a>
-      )
-    }
-
-    if (menu.label === "Partners") {
-      return (
-        <a key={menu.label} href="/" className="header__link" onClick={handlePartnersClick}>
-          {content}
-        </a>
-      )
-    }
-
-    if (menu.label === "Official Uniform") {
-      return (
-        <a key={menu.label} href="/" className="header__link" onClick={handleUniformClick}>
-          {content}
-        </a>
-      )
-    }
-
-    if (menu.label === "VIDEO") {
-      return (
-        <a key={menu.label} href="/" className="header__link" onClick={handleVidClick}>
-          {content}
-        </a>
-      )
-    }
-
-    if (menu.label === "News & Events") {
-      return (
-        <a key={menu.label} href="/" className="header__link" onClick={handleNewsClick}>
-          {content}
-        </a>
-      )
-    }
-
-    return (
-      <a key={menu.label} href={menu.href} className="header__link">
-        {content}
-      </a>
-    )
-  }
-
   return (
     <header className={`header ${adminMode ? "header--admin" : ""}`}>
       <div className="header__inner">
-        <a href="/" className="header__logo" onClick={scrollToTop}>
+        <a
+          href="/"
+          className="header__logo"
+          aria-label="VEX Esports home"
+          onClick={handleLogoTap}
+        >
           <img src="/images/logo/vex-logo.png" alt="VEX Esports logo" />
 
-          {adminMode && (
-            <span className="header__admin-badge">
-              ADMIN
-            </span>
-          )}
+          {adminMode && <span className="header__admin-badge">ADMIN</span>}
         </a>
 
-        <nav className="header__nav">
-          {menus.map(renderMenu)}
+        <nav className="header__nav" aria-label="Primary navigation">
+          {menus.map((menu) => {
+            const content = (
+              <>
+                <span className="header__label header__label--desktop">
+                  {menu.label}
+                </span>
+
+                <span className="header__label header__label--mobile">
+                  {menu.mobileLabel}
+                </span>
+              </>
+            )
+
+            if (menu.href) {
+              return (
+                <a
+                  key={menu.label}
+                  href={menu.href}
+                  className="header__link"
+                >
+                  {content}
+                </a>
+              )
+            }
+
+            if (menu.id === "partners") {
+              return (
+                <a
+                  key={menu.label}
+                  href={`#${menu.id}`}
+                  className="header__link"
+                  onClick={scrollToPartners}
+                >
+                  {content}
+                </a>
+              )
+            }
+
+            if (menu.id === "roster") {
+              return (
+                <a
+                  key={menu.label}
+                  href={`#${menu.id}`}
+                  className="header__link"
+                  onClick={(e) => {
+                    window.dispatchEvent(
+                      new CustomEvent("restartRosterAnimation")
+                    )
+                    scrollToSection(e, menu.id)
+                  }}
+                >
+                  {content}
+                </a>
+              )
+            }
+
+            return (
+              <a
+                key={menu.label}
+                href={`#${menu.id}`}
+                className="header__link"
+                onClick={(e) => scrollToSection(e, menu.id)}
+              >
+                {content}
+              </a>
+            )
+          })}
         </nav>
       </div>
     </header>
