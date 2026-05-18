@@ -1,27 +1,37 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import "./Header.css"
+
 const ADMIN_PASSWORD = "vex2026"
+
+const menus = [
+  { label: "Roster", mobileLabel: "Roster", id: "roster" },
+  { label: "Partners", mobileLabel: "Partners", id: "partners" },
+  { label: "Official Uniform", mobileLabel: "Uniform", id: "uniform" },
+  {
+    label: "ACADEMY",
+    mobileLabel: "ACADEMY",
+    href: "https://vex-academy.vercel.app/",
+  },
+  { label: "VIDEO", mobileLabel: "VIDEO", id: "vid" },
+  { label: "News & Events", mobileLabel: "News", id: "news" },
+]
 
 function Header() {
   const [adminMode, setAdminMode] = useState(false)
   const [tapCount, setTapCount] = useState(0)
-
-  const menus = [
-    { label: "Roster", mobileLabel: "Roster", id: "roster" },
-    { label: "Partners", mobileLabel: "Partners", id: "partners" },
-    { label: "Official Uniform", mobileLabel: "Uniform", id: "uniform" },
-    {
-      label: "ACADEMY",
-      mobileLabel: "ACADEMY",
-      href: "https://vex-academy.vercel.app/",
-    },
-    { label: "VIDEO", mobileLabel: "VIDEO", id: "vid" },
-    { label: "News & Events", mobileLabel: "News", id: "news" },
-  ]
+  const keyIndexRef = useRef(0)
 
   const isMobile = () => window.innerWidth <= 640
 
-  const enableAdminMode = () => {
+  const setAdminOn = () => {
+    document.body.classList.add("vex-admin-mode")
+    setAdminMode(true)
+    window.dispatchEvent(new Event("vex-admin-mode-change"))
+  }
+
+  const requestAdminMode = () => {
+    if (document.body.classList.contains("vex-admin-mode")) return
+
     const password = window.prompt("ADMIN PASSWORD")
 
     if (password !== ADMIN_PASSWORD) {
@@ -29,8 +39,7 @@ function Header() {
       return
     }
 
-    document.body.classList.add("vex-admin-mode")
-    window.dispatchEvent(new Event("vex-admin-mode-change"))
+    setAdminOn()
   }
 
   const scrollToTop = (e) => {
@@ -46,7 +55,7 @@ function Header() {
     const nextTapCount = tapCount + 1
 
     if (nextTapCount >= 10) {
-      enableAdminMode()
+      requestAdminMode()
       setTapCount(0)
       return
     }
@@ -88,6 +97,7 @@ function Header() {
 
   const handleRosterClick = (e) => {
     e.preventDefault()
+
     window.dispatchEvent(new CustomEvent("restartRosterAnimation"))
 
     if (isMobile()) {
@@ -160,23 +170,23 @@ function Header() {
       "ArrowRight",
     ]
 
-    let index = 0
-
     const handleKeyDown = (e) => {
       if (isMobile()) return
 
-      if (e.key === sequence[index]) {
-        index += 1
+      const currentKey = sequence[keyIndexRef.current]
 
-        if (index === sequence.length) {
-          enableAdminMode()
-          index = 0
+      if (e.key === currentKey || e.code === currentKey) {
+        keyIndexRef.current += 1
+
+        if (keyIndexRef.current >= sequence.length) {
+          keyIndexRef.current = 0
+          requestAdminMode()
         }
 
         return
       }
 
-      index = 0
+      keyIndexRef.current = e.key === sequence[0] ? 1 : 0
     }
 
     window.addEventListener("keydown", handleKeyDown)
@@ -200,6 +210,66 @@ function Header() {
     }
   }, [])
 
+  const renderMenu = (menu) => {
+    const content = (
+      <>
+        <span className="header__label header__label--desktop">
+          {menu.label}
+        </span>
+
+        <span className="header__label header__label--mobile">
+          {menu.mobileLabel}
+        </span>
+      </>
+    )
+
+    if (menu.label === "Roster") {
+      return (
+        <a key={menu.label} href="/" className="header__link" onClick={handleRosterClick}>
+          {content}
+        </a>
+      )
+    }
+
+    if (menu.label === "Partners") {
+      return (
+        <a key={menu.label} href="/" className="header__link" onClick={handlePartnersClick}>
+          {content}
+        </a>
+      )
+    }
+
+    if (menu.label === "Official Uniform") {
+      return (
+        <a key={menu.label} href="/" className="header__link" onClick={handleUniformClick}>
+          {content}
+        </a>
+      )
+    }
+
+    if (menu.label === "VIDEO") {
+      return (
+        <a key={menu.label} href="/" className="header__link" onClick={handleVidClick}>
+          {content}
+        </a>
+      )
+    }
+
+    if (menu.label === "News & Events") {
+      return (
+        <a key={menu.label} href="/" className="header__link" onClick={handleNewsClick}>
+          {content}
+        </a>
+      )
+    }
+
+    return (
+      <a key={menu.label} href={menu.href} className="header__link">
+        {content}
+      </a>
+    )
+  }
+
   return (
     <header className={`header ${adminMode ? "header--admin" : ""}`}>
       <div className="header__inner">
@@ -214,65 +284,7 @@ function Header() {
         </a>
 
         <nav className="header__nav">
-          {menus.map((menu) => {
-            const content = (
-              <>
-                <span className="header__label header__label--desktop">
-                  {menu.label}
-                </span>
-
-                <span className="header__label header__label--mobile">
-                  {menu.mobileLabel}
-                </span>
-              </>
-            )
-
-            if (menu.label === "Roster") {
-              return (
-                <a key={menu.label} href="/" className="header__link" onClick={handleRosterClick}>
-                  {content}
-                </a>
-              )
-            }
-
-            if (menu.label === "Partners") {
-              return (
-                <a key={menu.label} href="/" className="header__link" onClick={handlePartnersClick}>
-                  {content}
-                </a>
-              )
-            }
-
-            if (menu.label === "Official Uniform") {
-              return (
-                <a key={menu.label} href="/" className="header__link" onClick={handleUniformClick}>
-                  {content}
-                </a>
-              )
-            }
-
-            if (menu.label === "VIDEO") {
-              return (
-                <a key={menu.label} href="/" className="header__link" onClick={handleVidClick}>
-                  {content}
-                </a>
-              )
-            }
-
-            if (menu.label === "News & Events") {
-              return (
-                <a key={menu.label} href="/" className="header__link" onClick={handleNewsClick}>
-                  {content}
-                </a>
-              )
-            }
-
-            return (
-              <a key={menu.label} href={menu.href} className="header__link">
-                {content}
-              </a>
-            )
-          })}
+          {menus.map(renderMenu)}
         </nav>
       </div>
     </header>
