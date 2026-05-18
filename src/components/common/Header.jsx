@@ -21,7 +21,7 @@ function Header() {
   const [tapCount, setTapCount] = useState(0)
 
   const enableAdminMode = () => {
-    const password = window.prompt("관리자 비밀번호")
+    const password = window.prompt("관리자 비밀번호 입력")
 
     if (password !== ADMIN_PASSWORD) {
       alert("비밀번호가 틀렸습니다.")
