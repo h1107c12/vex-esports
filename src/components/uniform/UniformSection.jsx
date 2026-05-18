@@ -8,7 +8,7 @@ export default function UniformSection() {
       <div className="uniform-container">
         <div className="uniform-header">
           <h2 className="uniform-title">OFFICIAL UNIFORM</h2>
-          <p className="uniform-subtitle">VEX Esports 2026 하계 공식 유니폼</p>
+          <p className="uniform-subtitle">Vex E-Sports 2026 하계 공식 유니폼</p>
         </div>
 
         <div className="uniform-image-wrap">
