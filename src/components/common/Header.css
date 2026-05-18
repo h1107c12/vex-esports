@@ -236,7 +236,7 @@
   }
 
   .header__link::after {
-    bottom: -1px;
+    bottom: 3px;
   }
 
   .header__label--desktop {
