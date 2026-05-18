@@ -17,7 +17,7 @@ export default function VidSection() {
     const { data, error } = await supabase
       .from("videos")
       .select("*")
-      .order("created_at", { ascending: false })
+      .order("title", { ascending: true })
 
     if (error) {
       console.error(error)
@@ -27,8 +27,9 @@ export default function VidSection() {
     setVideos(data || [])
 
     if (data?.length) {
-      setSelectedVideo(data[0])
-    }
+    const randomIndex = Math.floor(Math.random() * data.length)
+    setSelectedVideo(data[randomIndex])
+  }
   }
 
   useEffect(() => {
