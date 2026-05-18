@@ -34,6 +34,73 @@
   color: rgba(214, 223, 255, 0.72);
 }
 
+/* ADMIN */
+
+.video-admin {
+  margin-bottom: 32px;
+  padding: 22px;
+  border-radius: 20px;
+  background: rgba(10, 16, 30, 0.84);
+  border: 1px solid rgba(116, 198, 255, 0.22);
+  box-shadow:
+    0 0 24px rgba(83, 183, 255, 0.08),
+    0 18px 42px rgba(0, 0, 0, 0.34);
+}
+
+.video-admin__grid {
+  display: grid;
+  gap: 12px;
+}
+
+.video-admin input {
+  width: 100%;
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(116, 198, 255, 0.18);
+  background: rgba(255, 255, 255, 0.04);
+  color: white;
+  font-size: 14px;
+  outline: none;
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.video-admin input:focus {
+  border-color: rgba(116, 198, 255, 0.58);
+  box-shadow: 0 0 16px rgba(83, 183, 255, 0.14);
+}
+
+.video-admin button {
+  width: 100%;
+  height: 48px;
+  margin-top: 14px;
+  border: 0;
+  border-radius: 14px;
+  cursor: pointer;
+  font-family: "Orbitron", sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  color: white;
+  background: linear-gradient(
+    135deg,
+    #4d9cff,
+    #8c5cff
+  );
+  box-shadow:
+    0 0 20px rgba(83, 183, 255, 0.16),
+    0 10px 28px rgba(0, 0, 0, 0.32);
+  transition:
+    transform 0.25s ease,
+    opacity 0.25s ease;
+}
+
+.video-admin button:hover {
+  transform: translateY(-2px);
+  opacity: 0.92;
+}
+
 /* 큰 프리뷰 */
 
 .vid-preview {
@@ -100,9 +167,6 @@
 .vid-card {
   flex: 1;
   min-width: 0;
-  padding: 0;
-  text-align: left;
-  cursor: pointer;
   border-radius: 20px;
   overflow: hidden;
   background: rgba(12, 16, 32, 0.82);
@@ -128,6 +192,13 @@
   box-shadow:
     0 0 24px rgba(83, 183, 255, 0.24),
     0 16px 36px rgba(0, 0, 0, 0.38);
+}
+
+.vid-card__button {
+  all: unset;
+  display: block;
+  width: 100%;
+  cursor: pointer;
 }
 
 .vid-card__video {
@@ -211,6 +282,24 @@
   margin: 0;
   font-size: 13px;
   color: rgba(214, 223, 255, 0.66);
+}
+
+.vid-card__delete {
+  width: 100%;
+  height: 42px;
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 80, 80, 0.12);
+  color: #ff8b8b;
+  cursor: pointer;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease;
+}
+
+.vid-card__delete:hover {
+  background: rgba(255, 80, 80, 0.18);
+  color: #ffb1b1;
 }
 
 @media (max-width: 900px) {
