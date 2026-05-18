@@ -1,8 +1,8 @@
 function Header() {
   const menus = [
-    { label: "Roster", mobileLabel: "Roster", href: "#roster" },
-    { label: "Partners", mobileLabel: "Partners", href: "#partners" },
-    { label: "Official Uniform", mobileLabel: "Uniform", href: "#uniform" },
+    { label: "Roster", mobileLabel: "Roster", id: "roster" },
+    { label: "Partners", mobileLabel: "Partners", id: "partners" },
+    { label: "Official Uniform", mobileLabel: "Uniform", id: "uniform" },
 
     {
       label: "ACADEMY",
@@ -10,11 +10,34 @@ function Header() {
       href: "https://vex-academy.vercel.app/",
     },
 
-    { label: "VIDEO", mobileLabel: "VIDEO", href: "#vid" },
-    { label: "News & Events", mobileLabel: "News", href: "#news" },
+    { label: "VIDEO", mobileLabel: "VIDEO", id: "vid" },
+    { label: "News & Events", mobileLabel: "News", id: "news" },
   ]
 
   const isMobile = () => window.innerWidth <= 640
+
+  const scrollToTop = (e) => {
+    e.preventDefault()
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    })
+  }
+
+  const scrollToSection = (id, offset = 0) => {
+    const el = document.getElementById(id)
+    if (!el) return
+
+    const rect = el.getBoundingClientRect()
+    const absoluteTop = window.scrollY + rect.top
+    const targetPosition = absoluteTop - offset
+
+    window.scrollTo({
+      top: Math.max(targetPosition, 0),
+      behavior: "smooth",
+    })
+  }
 
   const scrollToSectionForMobile = (id, offset = 0) => {
     const el = document.getElementById(id)
@@ -31,12 +54,16 @@ function Header() {
   }
 
   const handleRosterClick = (e) => {
+    e.preventDefault()
+
     window.dispatchEvent(new CustomEvent("restartRosterAnimation"))
 
-    if (!isMobile()) return
+    if (isMobile()) {
+      scrollToSectionForMobile("roster", 10)
+      return
+    }
 
-    e.preventDefault()
-    scrollToSectionForMobile("roster", 10)
+    scrollToSection("roster", 90)
   }
 
   const handlePartnersClick = (e) => {
@@ -57,30 +84,42 @@ function Header() {
   }
 
   const handleUniformClick = (e) => {
-    if (!isMobile()) return
-
     e.preventDefault()
-    scrollToSectionForMobile("uniform", 18)
+
+    if (isMobile()) {
+      scrollToSectionForMobile("uniform", 18)
+      return
+    }
+
+    scrollToSection("uniform", 90)
   }
 
   const handleVidClick = (e) => {
-    if (!isMobile()) return
-
     e.preventDefault()
-    scrollToSectionForMobile("vid", 18)
+
+    if (isMobile()) {
+      scrollToSectionForMobile("vid", 18)
+      return
+    }
+
+    scrollToSection("vid", 90)
   }
 
   const handleNewsClick = (e) => {
-    if (!isMobile()) return
-
     e.preventDefault()
-    scrollToSectionForMobile("news", 18)
+
+    if (isMobile()) {
+      scrollToSectionForMobile("news", 18)
+      return
+    }
+
+    scrollToSection("news", 90)
   }
 
   return (
     <header className="header">
       <div className="header__inner">
-        <a href="#top" className="header__logo">
+        <a href="/" className="header__logo" onClick={scrollToTop}>
           <img src="/images/logo/vex-logo.png" alt="VEX Esports logo" />
         </a>
 
@@ -102,7 +141,7 @@ function Header() {
               return (
                 <a
                   key={menu.label}
-                  href={menu.href}
+                  href="/"
                   className="header__link"
                   onClick={handleRosterClick}
                 >
@@ -115,7 +154,7 @@ function Header() {
               return (
                 <a
                   key={menu.label}
-                  href={menu.href}
+                  href="/"
                   className="header__link"
                   onClick={handlePartnersClick}
                 >
@@ -128,7 +167,7 @@ function Header() {
               return (
                 <a
                   key={menu.label}
-                  href={menu.href}
+                  href="/"
                   className="header__link"
                   onClick={handleUniformClick}
                 >
@@ -141,7 +180,7 @@ function Header() {
               return (
                 <a
                   key={menu.label}
-                  href={menu.href}
+                  href="/"
                   className="header__link"
                   onClick={handleVidClick}
                 >
@@ -154,7 +193,7 @@ function Header() {
               return (
                 <a
                   key={menu.label}
-                  href={menu.href}
+                  href="/"
                   className="header__link"
                   onClick={handleNewsClick}
                 >
