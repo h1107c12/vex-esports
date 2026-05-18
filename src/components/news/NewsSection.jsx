@@ -27,7 +27,7 @@ export default function NewsSection() {
         <div className="news-header">
           <h2 className="news-title">뉴스 및 이벤트</h2>
           <p className="news-subtitle">
-            Vex Esports의 최신 소식을 SNS에서 만나보세요
+            Vex E-Sports의 최신 소식을 SNS에서 만나보세요
           </p>
         </div>
 

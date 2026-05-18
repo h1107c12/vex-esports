@@ -29,7 +29,7 @@ function VidSection() {
       <div className="vid-section__inner">
         <div className="vid-section__header">
           <h2 className="vid-section__title">VIDEO</h2>
-          <p className="vid-section__desc">VEX Esports 공식 영상</p>
+          <p className="vid-section__desc">Vex E-Sports 공식 영상</p>
         </div>
 
         <div className="vid-list">
