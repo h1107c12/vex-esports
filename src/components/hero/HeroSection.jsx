@@ -1,4 +1,5 @@
 import { useMemo } from "react"
+import "./HeroSection.css"
 
 function HeroSection() {
   const stars = useMemo(

@@ -1,5 +1,7 @@
-import "./NewsSection.css";
-import { FaInstagram, FaXTwitter } from "react-icons/fa6";
+import { useEffect, useState } from "react"
+import "./NewsSection.css"
+import { FaInstagram, FaXTwitter } from "react-icons/fa6"
+import { supabase } from "../../lib/supabase"
 
 const socialLinks = [
   {
@@ -18,39 +20,117 @@ const socialLinks = [
     buttonText: "Follow",
     theme: "x",
   },
-];
-
-const newsArticles = [
-  {
-    id: 1,
-    category: "NEWS",
-    date: "2026.01.01",
-    title: "Vex E-Sports 공식 홈페이지 오픈",
-    description:
-      "Vex E-Sports의 새로운 공식 홈페이지가 공개되었습니다.",
-    href: "https://example.com",
-  },
-  {
-    id: 2,
-    category: "EVENT",
-    date: "2026.01.08",
-    title: "Vex E-Sports 신규 로스터 공개",
-    description:
-      "새로운 시즌을 함께할 Vex E-Sports 선수단을 소개합니다.",
-    href: "https://example.com",
-  },
-  {
-    id: 3,
-    category: "ARTICLE",
-    date: "2026.01.12",
-    title: "대회 참가 및 팀 활동 소식",
-    description:
-      "다가오는 공식 대회 일정 및 활동 내용을 확인해보세요.",
-    href: "https://example.com",
-  },
-];
+]
 
 export default function NewsSection() {
+  const [adminMode, setAdminMode] = useState(false)
+  const [articles, setArticles] = useState([])
+  const [form, setForm] = useState({
+    category: "NEWS",
+    title: "",
+    description: "",
+    href: "",
+  })
+
+  const fetchArticles = async () => {
+    const { data, error } = await supabase
+      .from("news_articles")
+      .select("*")
+      .order("created_at", { ascending: false })
+
+    if (error) {
+      console.error(error)
+      return
+    }
+
+    setArticles(data || [])
+  }
+
+  useEffect(() => {
+    fetchArticles()
+
+    const checkAdminMode = () => {
+      setAdminMode(document.body.classList.contains("vex-admin-mode"))
+    }
+
+    checkAdminMode()
+
+    window.addEventListener("vex-admin-mode-change", checkAdminMode)
+
+    return () => {
+      window.removeEventListener("vex-admin-mode-change", checkAdminMode)
+    }
+  }, [])
+
+  const handleChange = (e) => {
+    const { name, value } = e.target
+
+    setForm((prev) => ({
+      ...prev,
+      [name]: value,
+    }))
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    if (!form.title.trim() || !form.description.trim() || !form.href.trim()) {
+      alert("제목, 설명, 링크를 모두 입력해줘.")
+      return
+    }
+
+    const today = new Date()
+      .toLocaleDateString("ko-KR")
+      .replaceAll(". ", ".")
+      .replace(".", ".")
+      .trim()
+
+    const { error } = await supabase
+      .from("news_articles")
+      .insert([
+        {
+          category: form.category,
+          date: today,
+          title: form.title,
+          description: form.description,
+          href: form.href,
+        },
+      ])
+
+    if (error) {
+      console.error(error)
+      alert("기사 등록 실패")
+      return
+    }
+
+    setForm({
+      category: "NEWS",
+      title: "",
+      description: "",
+      href: "",
+    })
+
+    fetchArticles()
+  }
+
+  const handleDelete = async (id) => {
+    const ok = window.confirm("이 기사를 삭제할까?")
+    if (!ok) return
+
+    const { error } = await supabase
+      .from("news_articles")
+      .delete()
+      .eq("id", id)
+
+    if (error) {
+      console.error(error)
+      alert("기사 삭제 실패")
+      return
+    }
+
+    fetchArticles()
+  }
+
   return (
     <section className="news-section" id="news">
       <div className="news-container">
@@ -62,44 +142,100 @@ export default function NewsSection() {
           </p>
         </div>
 
-        {/* 기사 카드 */}
+        {adminMode && (
+          <form className="news-admin" onSubmit={handleSubmit}>
+            <div className="news-admin__grid">
+              <select
+                name="category"
+                value={form.category}
+                onChange={handleChange}
+              >
+                <option value="NEWS">NEWS</option>
+                <option value="EVENT">EVENT</option>
+                <option value="ARTICLE">ARTICLE</option>
+              </select>
+
+              <input
+                type="text"
+                name="title"
+                placeholder="기사 제목"
+                value={form.title}
+                onChange={handleChange}
+              />
+
+              <input
+                type="text"
+                name="description"
+                placeholder="기사 설명"
+                value={form.description}
+                onChange={handleChange}
+              />
+
+              <input
+                type="text"
+                name="href"
+                placeholder="기사 링크"
+                value={form.href}
+                onChange={handleChange}
+              />
+            </div>
+
+            <button type="submit">
+              기사 등록
+            </button>
+          </form>
+        )}
+
         <div className="article-grid">
-          {newsArticles.map((article) => (
-            <a
+          {articles.map((article) => (
+            <article
               key={article.id}
-              href={article.href}
-              target="_blank"
-              rel="noreferrer"
               className="article-card"
             >
-              <div className="article-card__line" />
+              <a
+                href={article.href}
+                target="_blank"
+                rel="noreferrer"
+                className="article-card__link"
+              >
+                <div className="article-card__line" />
 
-              <div className="article-card__top">
-                <span className="article-card__category">
-                  {article.category}
-                </span>
+                <div className="article-card__top">
+                  <span className="article-card__category">
+                    {article.category}
+                  </span>
 
-                <span className="article-card__date">
-                  {article.date}
-                </span>
-              </div>
+                  <span className="article-card__date">
+                    {article.date}
+                  </span>
+                </div>
 
-              <h3 className="article-card__title">
-                {article.title}
-              </h3>
+                <h3 className="article-card__title">
+                  {article.title}
+                </h3>
 
-              <p className="article-card__description">
-                {article.description}
-              </p>
+                <p className="article-card__description">
+                  {article.description}
+                </p>
 
-              <div className="article-card__bottom">
-                기사 보러가기 →
-              </div>
-            </a>
+                <div className="article-card__bottom">
+                  기사 보러가기 →
+                </div>
+              </a>
+
+              {adminMode && (
+                <button
+                  type="button"
+                  className="article-card__delete"
+                  onClick={() => handleDelete(article.id)}
+                >
+                  삭제
+                </button>
+              )}
+            </article>
           ))}
         </div>
 
-        {/* SNS 카드 */}
         <div className="news-grid">
           {socialLinks.map((item) => (
             <article
@@ -130,5 +266,5 @@ export default function NewsSection() {
         </div>
       </div>
     </section>
-  );
+  )
 }

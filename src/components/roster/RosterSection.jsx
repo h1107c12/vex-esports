@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 import rosterData from "../../data/rosterData"
 import RosterCard from "./RosterCard"
+import "./RosterSection.css"
 
 function RosterSection() {
   const sectionRef = useRef(null)

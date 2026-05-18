@@ -1,0 +1,17 @@
+/* ================= SECTION COMMON ================= */
+.section-title {
+  font-size: clamp(42px, 5vw, 72px);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  line-height: 1;
+  background: linear-gradient(90deg, #69baff 0%, #7f8fff 45%, #b16dff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-desc {
+  margin-top: 14px;
+  font-size: 15px;
+  color: rgba(214, 223, 255, 0.72);
+}

@@ -14,10 +14,6 @@
   margin: 0 auto;
 }
 
-/* =========================
-   헤더
-========================= */
-
 .news-header {
   text-align: center;
   margin-bottom: 52px;
@@ -25,12 +21,10 @@
 
 .news-title {
   margin: 0;
-
   font-family: "Orbitron", sans-serif;
   font-size: clamp(34px, 4.6vw, 66px);
   font-weight: 700;
   letter-spacing: 0.08em;
-
   background: linear-gradient(
     90deg,
     #89a7ff 0%,
@@ -38,61 +32,121 @@
     #7b82ff 68%,
     #a873ff 100%
   );
-
   background-clip: text;
   -webkit-background-clip: text;
-
   color: transparent;
   -webkit-text-fill-color: transparent;
 }
 
 .news-subtitle {
   margin: 14px 0 0;
-
   color: rgba(255, 255, 255, 0.78);
-
   font-size: 18px;
   font-weight: 400;
 }
 
-/* =========================
-   기사 카드
-========================= */
+/* ADMIN */
+
+.news-admin {
+  margin-bottom: 32px;
+  padding: 24px;
+  border-radius: 22px;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(14, 18, 34, 0.95) 0%,
+      rgba(10, 12, 22, 0.98) 100%
+    );
+  border: 1px solid rgba(118, 160, 255, 0.18);
+  box-shadow:
+    0 18px 40px rgba(0, 0, 0, 0.28);
+}
+
+.news-admin__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.news-admin select,
+.news-admin input {
+  width: 100%;
+  height: 52px;
+  padding: 0 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.04);
+  color: #ffffff;
+  font-size: 14px;
+  outline: none;
+}
+
+.news-admin select:focus,
+.news-admin input:focus {
+  border-color: rgba(103, 221, 255, 0.5);
+  box-shadow: 0 0 18px rgba(103, 221, 255, 0.12);
+}
+
+.news-admin option {
+  background: #070b16;
+  color: #ffffff;
+}
+
+.news-admin input::placeholder {
+  color: rgba(255,255,255,0.38);
+}
+
+.news-admin button {
+  margin-top: 18px;
+  min-width: 140px;
+  height: 48px;
+  border: 0;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 14px;
+  color: #ffffff;
+  background:
+    linear-gradient(
+      135deg,
+      #4d9cff,
+      #8c5cff
+    );
+  box-shadow:
+    0 0 28px rgba(88, 120, 255, 0.22);
+}
+
+.news-admin button:hover {
+  filter: brightness(1.08);
+}
+
+/* ARTICLE */
 
 .article-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 20px;
-
   margin-bottom: 28px;
 }
 
 .article-card {
   position: relative;
-
   min-height: 250px;
-  padding: 28px;
-
   border-radius: 24px;
   overflow: hidden;
   text-decoration: none;
-
   display: flex;
   flex-direction: column;
-
   background:
     linear-gradient(
       180deg,
       rgba(15, 18, 32, 0.94) 0%,
       rgba(8, 10, 18, 0.98) 100%
     );
-
   border: 1px solid rgba(255,255,255,0.08);
-
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,0.04),
     0 18px 46px rgba(0,0,0,0.34);
-
   transition:
     transform 0.28s ease,
     border-color 0.28s ease,
@@ -101,27 +155,20 @@
 
 .article-card::before {
   content: "";
-
   position: absolute;
   inset: -40%;
-
   opacity: 0;
   pointer-events: none;
-
   background:
     radial-gradient(circle at 30% 20%, rgba(88,164,255,0.16), transparent 30%),
     radial-gradient(circle at 70% 80%, rgba(174,82,255,0.16), transparent 32%);
-
   filter: blur(34px);
-
   transition: opacity 0.28s ease;
 }
 
 .article-card:hover {
   transform: translateY(-6px);
-
   border-color: rgba(120,150,255,0.24);
-
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,0.06),
     0 24px 60px rgba(0,0,0,0.46),
@@ -132,15 +179,23 @@
   opacity: 1;
 }
 
+.article-card__link {
+  position: relative;
+  z-index: 1;
+  min-height: 250px;
+  height: 100%;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+}
+
 .article-card__line {
   position: absolute;
-
   top: 0;
   left: 24px;
   right: 24px;
-
   height: 2px;
-
   background:
     linear-gradient(
       90deg,
@@ -148,154 +203,123 @@
       #8b6cff,
       #c15cff
     );
-
   opacity: 0.95;
 }
 
 .article-card__top {
   position: relative;
   z-index: 1;
-
   display: flex;
   justify-content: space-between;
   gap: 12px;
-
   margin-bottom: 24px;
 }
 
 .article-card__category {
   font-family: "Orbitron", sans-serif;
-
   font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.14em;
-
   color: #8fb7ff;
 }
 
 .article-card__date {
   font-size: 13px;
-
   color: rgba(255,255,255,0.45);
-
   white-space: nowrap;
 }
 
 .article-card__title {
   position: relative;
   z-index: 1;
-
   margin: 0;
-
   color: rgba(255,255,255,0.95);
-
   font-size: 24px;
   font-weight: 700;
   line-height: 1.35;
-
   word-break: keep-all;
 }
 
 .article-card__description {
   position: relative;
   z-index: 1;
-
   margin-top: 14px;
-
   color: rgba(255,255,255,0.62);
-
   font-size: 15px;
   line-height: 1.7;
-
   word-break: keep-all;
 }
 
 .article-card__bottom {
   position: relative;
   z-index: 1;
-
   margin-top: auto;
   padding-top: 28px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   color: rgba(255,255,255,0.88);
-
   font-size: 15px;
   font-weight: 700;
 }
 
-.article-card__arrow {
-  width: 38px;
-  height: 38px;
-
+.article-card__delete {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  z-index: 5;
+  width: 74px;
+  height: 34px;
+  border: 0;
   border-radius: 999px;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
+  cursor: pointer;
   color: #ffffff;
-
+  font-size: 12px;
+  font-weight: 700;
   background:
     linear-gradient(
       135deg,
-      #4d9cff,
-      #8c5cff
+      #ff4d6d,
+      #ff2d55
     );
-
   box-shadow:
-    0 0 20px rgba(88,120,255,0.24);
-
-  transition: transform 0.28s ease;
+    0 0 18px rgba(255, 45, 85, 0.24);
 }
 
-.article-card:hover .article-card__arrow {
-  transform: translateX(4px);
+.article-card__delete:hover {
+  filter: brightness(1.08);
 }
 
-/* =========================
-   SNS 카드
-========================= */
+/* SNS */
 
 .news-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
-
   margin-top: 22px;
 }
 
 .news-card {
   position: relative;
-
   min-height: 272px;
   padding: 38px 28px 30px;
-
   border-radius: 24px;
   overflow: hidden;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   background:
     linear-gradient(
       180deg,
       rgba(13, 16, 29, 0.92) 0%,
       rgba(10, 12, 20, 0.96) 100%
     );
-
   border: 1px solid rgba(255,255,255,0.08);
-
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,0.04),
     0 0 0 1px rgba(255,255,255,0.015),
     0 14px 40px rgba(0,0,0,0.34);
-
   transition:
     border-color 0.28s ease,
     box-shadow 0.28s ease,
@@ -304,14 +328,10 @@
 
 .news-card::before {
   content: "";
-
   position: absolute;
   inset: 0;
-
   border-radius: inherit;
-
   pointer-events: none;
-
   background:
     linear-gradient(
       180deg,
@@ -328,14 +348,10 @@
 .news-card__glow {
   position: absolute;
   inset: -40px;
-
   z-index: 0;
   pointer-events: none;
-
   opacity: 0.45;
-
   filter: blur(42px);
-
   transition:
     opacity 0.28s ease,
     filter 0.28s ease;
@@ -356,13 +372,11 @@
 
 .news-card:hover {
   border-color: rgba(145,158,255,0.18);
-
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,0.05),
     0 0 0 1px rgba(130,145,255,0.04),
     0 20px 50px rgba(0,0,0,0.4),
     0 0 30px rgba(88,108,255,0.08);
-
   filter: brightness(1.03);
 }
 
@@ -381,17 +395,12 @@
 .news-card__icon {
   width: 96px;
   height: 96px;
-
   border-radius: 24px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   font-size: 54px;
-
   margin-bottom: 22px;
-
   box-shadow:
     0 12px 30px rgba(0,0,0,0.25),
     inset 0 1px 0 rgba(255,255,255,0.05);
@@ -399,7 +408,6 @@
 
 .news-card__icon--instagram {
   color: #ffffff;
-
   background:
     linear-gradient(
       135deg,
@@ -416,11 +424,8 @@
 
 .news-card__handle {
   margin: 0 0 26px;
-
   font-size: 18px;
-
   color: rgba(255,255,255,0.82);
-
   text-align: center;
 }
 
@@ -428,26 +433,18 @@
   position: relative;
   overflow: hidden;
   isolation: isolate;
-
   min-width: 102px;
   height: 44px;
   padding: 0 22px;
-
   border-radius: 999px;
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   text-decoration: none;
-
   font-size: 16px;
   font-weight: 600;
-
   color: #ffffff;
-
   border: 1px solid rgba(255,255,255,0.12);
-
   transition:
     box-shadow 0.25s ease,
     border-color 0.25s ease,
@@ -462,7 +459,6 @@
       #ff4b88 55%,
       #ff9a3d 100%
     );
-
   box-shadow:
     0 10px 26px rgba(255,78,145,0.22),
     0 0 20px rgba(154,70,255,0.12);
@@ -475,7 +471,6 @@
       #050505 0%,
       #111111 100%
     );
-
   box-shadow:
     0 10px 24px rgba(255,255,255,0.03),
     0 0 20px rgba(255,255,255,0.04);
@@ -483,14 +478,10 @@
 
 .news-card__button::before {
   content: "";
-
   position: absolute;
   inset: 1px;
-
   border-radius: inherit;
-
   z-index: -1;
-
   background:
     linear-gradient(
       180deg,
@@ -502,18 +493,12 @@
 
 .news-card__button::after {
   content: "";
-
   position: absolute;
   inset: -3px;
-
   z-index: -2;
-
   border-radius: inherit;
-
   opacity: 0.4;
-
   filter: blur(16px);
-
   transition:
     opacity 0.25s ease,
     filter 0.25s ease;
@@ -539,19 +524,13 @@
 
 .news-card__button-shine {
   position: absolute;
-
   top: 0;
   left: -38%;
-
   width: 34%;
   height: 100%;
-
   transform: skewX(-24deg);
-
   pointer-events: none;
-
   opacity: 0;
-
   background:
     linear-gradient(
       90deg,
@@ -593,10 +572,6 @@
   }
 }
 
-/* =========================
-   반응형
-========================= */
-
 @media (max-width: 1024px) {
   .article-grid {
     grid-template-columns: 1fr;
@@ -629,6 +604,10 @@
     font-size: 15px;
   }
 
+  .news-admin__grid {
+    grid-template-columns: 1fr;
+  }
+
   .article-grid {
     gap: 16px;
     margin-bottom: 20px;
@@ -636,8 +615,12 @@
 
   .article-card {
     min-height: 220px;
-    padding: 24px 20px;
     border-radius: 20px;
+  }
+
+  .article-card__link {
+    min-height: 220px;
+    padding: 24px 20px;
   }
 
   .article-card__title {
@@ -662,11 +645,8 @@
   .news-card__icon {
     width: 84px;
     height: 84px;
-
     border-radius: 20px;
-
     font-size: 46px;
-
     margin-bottom: 18px;
   }
 

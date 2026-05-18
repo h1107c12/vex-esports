@@ -1,0 +1,15 @@
+/* ================= DUMMY SECTIONS ================= */
+.dummy-section {
+  min-height: 100vh;
+  padding: 140px 24px 80px;
+  border-top: 1px solid rgba(90, 118, 255, 0.1);
+  background: #02040a;
+}
+
+.dummy-section h2 {
+  font-size: clamp(42px, 5vw, 84px);
+  background: linear-gradient(90deg, #5db9ff, #8d8bff, #ba6dff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
