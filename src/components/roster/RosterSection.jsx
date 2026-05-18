@@ -63,7 +63,7 @@ function RosterSection() {
         <div className="roster-section__header">
           <h2 className="roster-section__title">ROSTER</h2>
           <p className="roster-section__desc">
-            Vex Esports의 정예 멤버들을 소개합니다
+            Vex E-Sports의 정예 멤버들을 소개합니다
           </p>
         </div>
 
