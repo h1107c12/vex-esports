@@ -3,7 +3,7 @@ function Header() {
     { label: "Roster", mobileLabel: "Roster", href: "#roster" },
     { label: "Partners", mobileLabel: "Partners", href: "#partners" },
     { label: "Official Uniform", mobileLabel: "Uniform", href: "#uniform" },
-    { label: "VID", mobileLabel: "VID", href: "#vid" },
+    { label: "VIDEO", mobileLabel: "VIDEO", href: "#vid" },
     { label: "News & Events", mobileLabel: "News", href: "#news" },
   ]
 
