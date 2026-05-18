@@ -1,3 +1,4 @@
+import { useState } from "react"
 import "./VidSection.css"
 
 const videos = [
@@ -9,7 +10,7 @@ const videos = [
   {
     title: "VEX OFFICIAL VID 02",
     desc: "VEX E-SPORTS 공식 창단",
-    videoId: "mAxPqc8X3Gk",
+    videoId: "BlB5Ns1i-UE",
   },
   {
     title: "VEX OFFICIAL VID 03",
@@ -24,6 +25,8 @@ const videos = [
 ]
 
 function VidSection() {
+  const [selectedVideo, setSelectedVideo] = useState(videos[0])
+
   return (
     <section id="vid" className="vid-section">
       <div className="vid-section__inner">
@@ -32,24 +35,48 @@ function VidSection() {
           <p className="vid-section__desc">Vex E-Sports 공식 영상</p>
         </div>
 
-        <div className="vid-list">
-          {videos.map((video) => (
-            <article className="vid-card" key={video.videoId}>
-              <div className="vid-card__video">
-                <iframe
-                  src={`https://www.youtube.com/embed/${video.videoId}`}
-                  title={video.title}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              </div>
+        <div className="vid-preview">
+          <div className="vid-preview__video">
+            <iframe
+              key={selectedVideo.videoId}
+              src={`https://www.youtube.com/embed/${selectedVideo.videoId}?rel=0`}
+              title={selectedVideo.title}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          </div>
 
-              <div className="vid-card__info">
-                <h3>{video.title}</h3>
-                <p>{video.desc}</p>
-              </div>
-            </article>
-          ))}
+          <div className="vid-preview__info">
+            <span>NOW PLAYING</span>
+            <h3>{selectedVideo.title}</h3>
+            <p>{selectedVideo.desc}</p>
+          </div>
+        </div>
+
+        <div className="vid-list">
+          {videos.map((video) => {
+            const thumbnail = `https://img.youtube.com/vi/${video.videoId}/maxresdefault.jpg`
+            const isActive = selectedVideo.videoId === video.videoId
+
+            return (
+              <button
+                type="button"
+                className={`vid-card ${isActive ? "is-active" : ""}`}
+                key={video.videoId}
+                onClick={() => setSelectedVideo(video)}
+              >
+                <div className="vid-card__video">
+                  <img src={thumbnail} alt={video.title} loading="lazy" />
+                  <span className="vid-card__play">▶</span>
+                </div>
+
+                <div className="vid-card__info">
+                  <h3>{video.title}</h3>
+                  <p>{video.desc}</p>
+                </div>
+              </button>
+            )
+          })}
         </div>
       </div>
     </section>
