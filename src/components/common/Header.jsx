@@ -93,8 +93,8 @@ function Header() {
   useEffect(() => {
     const sequence = [
       "ArrowUp",
-      "ArrowDown",
       "ArrowUp",
+      "ArrowDown",
       "ArrowDown",
       "ArrowLeft",
       "ArrowRight",
