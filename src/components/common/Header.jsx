@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import "./Header.css"
 
 const ADMIN_PASSWORD = "vex2026"
@@ -20,20 +20,22 @@ function Header() {
   const [adminMode, setAdminMode] = useState(false)
   const [tapCount, setTapCount] = useState(0)
 
+  const tapResetTimer = useRef(null)
+
   const enableAdminMode = () => {
-  if (document.body.classList.contains("vex-admin-mode")) return
+    if (document.body.classList.contains("vex-admin-mode")) return
 
-  const password = window.prompt("관리자 비밀번호 입력")
-  if (password === null) return
+    const password = window.prompt("관리자 비밀번호 입력")
+    if (password === null) return
 
-  if (password !== ADMIN_PASSWORD) {
-    alert("비밀번호가 틀렸습니다.")
-    return
+    if (password !== ADMIN_PASSWORD) {
+      alert("비밀번호가 틀렸습니다.")
+      return
+    }
+
+    document.body.classList.add("vex-admin-mode")
+    window.dispatchEvent(new Event("vex-admin-mode-change"))
   }
-
-  document.body.classList.add("vex-admin-mode")
-  window.dispatchEvent(new Event("vex-admin-mode-change"))
-}
 
   const scrollToSection = (e, sectionId) => {
     e.preventDefault()
@@ -59,6 +61,7 @@ function Header() {
 
     const rect = el.getBoundingClientRect()
     const absoluteTop = window.scrollY + rect.top
+
     const targetPosition =
       absoluteTop - window.innerHeight / 2 + rect.height / 2
 
@@ -78,6 +81,10 @@ function Header() {
 
     if (window.innerWidth > 768) return
 
+    if (tapResetTimer.current) {
+      clearTimeout(tapResetTimer.current)
+    }
+
     const nextTapCount = tapCount + 1
 
     if (nextTapCount >= 10) {
@@ -88,8 +95,9 @@ function Header() {
 
     setTapCount(nextTapCount)
 
-    window.setTimeout(() => {
+    tapResetTimer.current = window.setTimeout(() => {
       setTapCount(0)
+      tapResetTimer.current = null
     }, 3500)
   }
 
@@ -141,7 +149,10 @@ function Header() {
     window.addEventListener("vex-admin-mode-change", checkAdminMode)
 
     return () => {
-      window.removeEventListener("vex-admin-mode-change", checkAdminMode)
+      window.removeEventListener(
+        "vex-admin-mode-change",
+        checkAdminMode
+      )
     }
   }, [])
 
@@ -156,7 +167,11 @@ function Header() {
         >
           <img src="/images/logo/vex-logo.png" alt="VEX Esports logo" />
 
-          {adminMode && <span className="header__admin-badge">ADMIN</span>}
+          {adminMode && (
+            <span className="header__admin-badge">
+              ADMIN
+            </span>
+          )}
         </a>
 
         <nav className="header__nav" aria-label="Primary navigation">
@@ -208,6 +223,7 @@ function Header() {
                     window.dispatchEvent(
                       new CustomEvent("restartRosterAnimation")
                     )
+
                     scrollToSection(e, menu.id)
                   }}
                 >
