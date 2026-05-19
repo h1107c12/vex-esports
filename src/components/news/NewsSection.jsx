@@ -79,42 +79,6 @@ export default function NewsSection() {
     }
   }, [])
 
-  useEffect(() => {
-    const command = [
-      "ArrowUp",
-      "ArrowUp",
-      "ArrowDown",
-      "ArrowDown",
-      "ArrowLeft",
-      "ArrowRight",
-      "ArrowLeft",
-      "ArrowRight",
-    ]
-
-    let index = 0
-
-    const handleKeyDown = (e) => {
-      if (e.key === command[index]) {
-        index += 1
-
-        if (index === command.length) {
-          enableAdminMode()
-          index = 0
-        }
-
-        return
-      }
-
-      index = 0
-    }
-
-    window.addEventListener("keydown", handleKeyDown)
-
-    return () => {
-      window.removeEventListener("keydown", handleKeyDown)
-    }
-  }, [])
-
   const handleChange = (e) => {
     const { name, value } = e.target
 
