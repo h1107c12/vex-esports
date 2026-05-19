@@ -92,7 +92,7 @@ export default function NewsSection() {
     e.preventDefault()
 
     if (!form.title.trim() || !form.description.trim() || !form.href.trim()) {
-      alert("제목, 설명, 링크를 모두 입력해줘.")
+      alert("제목, 설명, 링크를 모두 입력해주세요.")
       return
     }
 
@@ -131,7 +131,7 @@ export default function NewsSection() {
   }
 
   const handleDelete = async (id) => {
-    const ok = window.confirm("이 기사를 삭제할까?")
+    const ok = window.confirm("이 기사를 삭제하시겠습니까?")
     if (!ok) return
 
     const { error } = await supabase
