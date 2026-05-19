@@ -85,7 +85,7 @@ export default function VidSection() {
     const videoId = extractVideoId(form.videoId)
 
     if (!form.title.trim() || !form.description.trim() || !videoId) {
-      alert("제목, 설명, 유튜브 링크를 모두 입력해줘.")
+      alert("제목, 설명, 유튜브 링크를 모두 입력해주세요.")
       return
     }
 
@@ -117,7 +117,7 @@ export default function VidSection() {
   const handleDelete = async (id) => {
     if (!adminMode) return
 
-    const ok = window.confirm("이 영상을 삭제할까?")
+    const ok = window.confirm("이 영상을 삭제하시겠습니까?")
     if (!ok) return
 
     const { error } = await supabase
