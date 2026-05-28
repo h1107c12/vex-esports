@@ -1,6 +1,6 @@
 const rosterData = [
   {
-    id: 4,
+    id: 3,
     image: "/images/roster/roy.png",
     alt: "ROY roster poster",
     name: "ROY",
@@ -26,17 +26,17 @@ const rosterData = [
     position: "Attacker",
     streamLink: "https://www.sooplive.co.kr/station/min060217",
   },
+  // {
+  //   id: 3,
+  //   image: "/images/roster/karwn.png",
+  //   alt: "Karwn roster poster",
+  //   name: "Karwn",
+  //   realName: "김도윤",
+  //   position: "Anchor/Backup",
+  //   streamLink: "https://www.sooplive.co.kr/station/k0212kdy1",
+  // },
   {
-    id: 3,
-    image: "/images/roster/karwn.png",
-    alt: "Karwn roster poster",
-    name: "Karwn",
-    realName: "김도윤",
-    position: "Anchor/Backup",
-    streamLink: "https://www.sooplive.co.kr/station/k0212kdy1",
-  },
-  {
-    id: 5,
+    id: 4,
     image: "/images/roster/2steb4n.png",
     alt: "2STEB4N roster poster",
     name: "2STEB4N",
@@ -45,7 +45,7 @@ const rosterData = [
     streamLink: "https://www.sooplive.co.kr/station/hasuerava7",
   },
   {
-    id: 6,
+    id: 5,
     image: "/images/roster/beom.png",
     alt: "BEOM roster poster",
     name: "Beom",
