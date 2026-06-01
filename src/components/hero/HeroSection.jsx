@@ -126,7 +126,7 @@ function HeroSection() {
   rel="noopener noreferrer"
   className="hero__academy-button"
 >
-  VEX ACADEMY
+  아카데미로 이동
 </a>
       </div>
     </section>
