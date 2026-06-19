@@ -33,7 +33,7 @@ const rosterData = [
     name: "Solution",
     realName: "박승찬",
     position: "Backup",
-    // streamLink: "https://www.sooplive.co.kr/station/k0212kdy1",
+    streamLink: "https://www.sooplive.com/station/bsc197",
   },
   {
     id: 4,
