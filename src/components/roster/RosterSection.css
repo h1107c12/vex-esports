@@ -58,13 +58,9 @@
 
 .roster-grid {
   display: grid;
-
-  /* 핵심 */
   grid-template-columns: repeat(4, 280px);
-
   justify-content: center;
   align-items: start;
-
   gap: 26px;
 }
 
@@ -86,7 +82,6 @@
 
 .roster-card {
   position: relative;
-
   width: 280px;
 
   transform: translateY(36px);
@@ -106,7 +101,6 @@
 
 .roster-card__poster {
   position: relative;
-
   width: 100%;
   overflow: hidden;
 
@@ -138,11 +132,10 @@
 }
 
 .roster-card__image {
+  display: block;
   width: 100%;
   aspect-ratio: 3 / 4.8;
-
   object-fit: cover;
-  display: block;
 }
 
 /* ================= OVERLAY ================= */
@@ -325,9 +318,12 @@
   }
 }
 
+/* ================= MOBILE FIX ================= */
+
 @media (max-width: 640px) {
   .roster-section {
     padding: 92px 14px 56px;
+    overflow: visible;
   }
 
   .roster-section__header {
@@ -344,30 +340,49 @@
   }
 
   .roster-grid {
+    display: grid;
     grid-template-columns: 1fr;
-
     gap: 16px;
-
     justify-items: center;
+    align-items: start;
+    overflow: visible;
+  }
+
+  .roster-grid > .roster-card,
+  .roster-grid > .roster-card:last-child:nth-child(5),
+  .roster-grid > .roster-card:nth-child(5):nth-last-child(2),
+  .roster-grid > .roster-card:nth-child(6):last-child {
+    grid-column: auto !important;
+    grid-row: auto !important;
   }
 
   .roster-card {
+    display: block;
+    position: relative;
     width: 100%;
     max-width: 300px;
 
-    transform: none;
-    opacity: 1;
-
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
     transition: none !important;
   }
 
   .roster-card--active {
-    transform: none;
-    opacity: 1;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
   }
 
   .roster-card__poster {
+    display: block;
+    position: relative;
+    width: 100%;
+
+    min-height: 450px;
+
     border-radius: 12px;
+    overflow: hidden;
     transition: none;
   }
 
@@ -382,7 +397,15 @@
   }
 
   .roster-card__image {
+    display: block !important;
+    width: 100%;
+    height: auto;
+    min-height: 450px;
     aspect-ratio: 3 / 4.5;
+    object-fit: cover;
+
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 
   .roster-card__info {
@@ -413,7 +436,6 @@
     width: 34px;
     height: 34px;
     bottom: 10px;
-
     transition: none;
   }
 
@@ -430,6 +452,14 @@
 
   .roster-card {
     max-width: 270px;
+  }
+
+  .roster-card__poster {
+    min-height: 405px;
+  }
+
+  .roster-card__image {
+    min-height: 405px;
   }
 
   .roster-card__name {

@@ -1,6 +1,6 @@
 const rosterData = [
   {
-    id: 3,
+    id: 1,
     image: "/images/roster/roy.png",
     alt: "ROY roster poster",
     name: "ROY",
@@ -18,7 +18,7 @@ const rosterData = [
     streamLink: "https://www.sooplive.co.kr/station/nyeong66",
   },
   {
-    id: 1,
+    id: 3,
     image: "/images/roster/lure.png",
     alt: "Lure roster poster",
     name: "Lure",
@@ -27,7 +27,7 @@ const rosterData = [
     streamLink: "https://www.sooplive.co.kr/station/min060217",
   },
   {
-    id: 3,
+    id: 4,
     image: "/images/roster/Solution.png",
     alt: "Solution roster poster",
     name: "Solution",
@@ -36,7 +36,7 @@ const rosterData = [
     streamLink: "https://www.sooplive.com/station/bsc197",
   },
   {
-    id: 4,
+    id: 5,
     image: "/images/roster/2steb4n.png",
     alt: "2STEB4N roster poster",
     name: "2STEB4N",
@@ -45,7 +45,7 @@ const rosterData = [
     streamLink: "https://www.sooplive.co.kr/station/hasuerava7",
   },
   {
-    id: 5,
+    id: 6,
     image: "/images/roster/beom.png",
     alt: "BEOM roster poster",
     name: "Beom",

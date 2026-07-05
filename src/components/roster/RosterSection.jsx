@@ -17,7 +17,9 @@ function RosterSection() {
     checkMobile()
     window.addEventListener("resize", checkMobile)
 
-    return () => window.removeEventListener("resize", checkMobile)
+    return () => {
+      window.removeEventListener("resize", checkMobile)
+    }
   }, [])
 
   useEffect(() => {
@@ -33,12 +35,16 @@ function RosterSection() {
       ([entry]) => {
         setIsVisible(entry.isIntersecting)
       },
-      { threshold: 0.2 }
+      {
+        threshold: 0.2,
+      }
     )
 
     observer.observe(target)
 
-    return () => observer.disconnect()
+    return () => {
+      observer.disconnect()
+    }
   }, [isMobile])
 
   useEffect(() => {
@@ -55,11 +61,7 @@ function RosterSection() {
   }, [isMobile])
 
   return (
-    <section
-      id="roster"
-      ref={sectionRef}
-      className="roster-section"
-    >
+    <section id="roster" ref={sectionRef} className="roster-section">
       <div className="roster-section__inner">
         <div className="roster-section__header">
           <h2 className="roster-section__title">ROSTER</h2>
@@ -71,7 +73,7 @@ function RosterSection() {
         <div className="roster-grid">
           {rosterData.map((player, index) => (
             <RosterCard
-              key={`${player.id}-${replayKey}`}
+              key={player.id}
               image={player.image}
               alt={player.alt}
               name={player.name}
@@ -81,6 +83,7 @@ function RosterSection() {
               index={index}
               isVisible={isVisible}
               replayKey={replayKey}
+              isMobile={isMobile}
             />
           ))}
         </div>
