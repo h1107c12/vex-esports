@@ -18,22 +18,22 @@ import detail8 from "../assets/partners/detail8.png"
 import detail9 from "../assets/partners/detail9.png"
 
 const partnersData = [
-  {
-    id: 1,
-    logo: p1,
-    name: "Partner 1",
-    website:
-      "https://dogshower.co.kr/category/%EC%95%84%EB%8B%B4-%EC%8A%A4%ED%82%A8%EC%BC%80%EC%96%B4/241/",
-    logoWidth: 180,
-    logoHeight: 152,
-    details: [
-      {
-        image: detail1,
-        text: `하루펫약선은 반려동물 자연주의 브랜드의 대표 브랜드로, 반려동물을 위한 체질 맞춤형 약선 식이개념을 현대적으로 구현한 프리미엄 펫 웰니스 브랜드입니다.
-약선은 약을 의미하는 개념이 아니라, 식재료의 성질과 조합을 통해 신체의 균형과 기력을 보완하는 전통적인 식문화입니다. 하루펫약선은 이러한 철학을 반려동물 영양 설계에 적용하여, 단순한 사료가 아닌 '매일 먹는 보양식'이라는 새로운 기준을 제안합니다.`,
-      },
-    ],
-  },
+//   {
+//     id: 1,
+//     logo: p1,
+//     name: "Partner 1",
+//     website:
+//       "https://dogshower.co.kr/category/%EC%95%84%EB%8B%B4-%EC%8A%A4%ED%82%A8%EC%BC%80%EC%96%B4/241/",
+//     logoWidth: 180,
+//     logoHeight: 152,
+//     details: [
+//       {
+//         image: detail1,
+//         text: `하루펫약선은 반려동물 자연주의 브랜드의 대표 브랜드로, 반려동물을 위한 체질 맞춤형 약선 식이개념을 현대적으로 구현한 프리미엄 펫 웰니스 브랜드입니다.
+// 약선은 약을 의미하는 개념이 아니라, 식재료의 성질과 조합을 통해 신체의 균형과 기력을 보완하는 전통적인 식문화입니다. 하루펫약선은 이러한 철학을 반려동물 영양 설계에 적용하여, 단순한 사료가 아닌 '매일 먹는 보양식'이라는 새로운 기준을 제안합니다.`,
+//       },
+//     ],
+//   },
   {
     id: 2,
     logo: p2,
@@ -102,24 +102,24 @@ const partnersData = [
       },
     ],
   },
-  {
-    id: 6,
-    logo: p6,
-    name: "Twire",
-    website: "https://twire.gg",
-    layout: "center",
-    hideTopLogo: true,
-    heroLink: true,
-    centerImageWidth: 340,
-    centerImageHeight: 210,
-    details: [
-      {
-        image: detail6,
-        text: `Twire.gg는 전 세계 PUBG 이스포츠 팀과 선수들의 경기 기록, 성과, 데이터를 한눈에 확인할 수 있는 
-        글로벌 이스포츠 정보 플랫폼입니다.`,
-      },
-    ],
-  },
+  // {
+  //   id: 6,
+  //   logo: p6,
+  //   name: "Twire",
+  //   website: "https://twire.gg",
+  //   layout: "center",
+  //   hideTopLogo: true,
+  //   heroLink: true,
+  //   centerImageWidth: 340,
+  //   centerImageHeight: 210,
+  //   details: [
+  //     {
+  //       image: detail6,
+  //       text: `Twire.gg는 전 세계 PUBG 이스포츠 팀과 선수들의 경기 기록, 성과, 데이터를 한눈에 확인할 수 있는 
+  //       글로벌 이스포츠 정보 플랫폼입니다.`,
+  //     },
+  //   ],
+  // },
   {
     id: 7,
     logo: p7,
