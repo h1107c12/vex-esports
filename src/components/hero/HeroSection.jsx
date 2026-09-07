@@ -1,5 +1,6 @@
 import { useMemo } from "react"
 import "./HeroSection.css"
+import ValorantPopup from "./ValorantPopup"
 
 function HeroSection() {
   const stars = useMemo(
@@ -52,6 +53,8 @@ function HeroSection() {
   )
 
   return (
+    <>
+    <ValorantPopup />
     <section id="top" className="hero">
       <div className="hero__ambient hero__ambient--left" />
       <div className="hero__ambient hero__ambient--right" />
@@ -130,6 +133,7 @@ function HeroSection() {
 </a>
       </div>
     </section>
+    </>
   )
 }
 

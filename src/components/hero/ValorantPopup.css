@@ -1,0 +1,146 @@
+.vex-vp, .vex-vp * { box-sizing: border-box; }
+.vex-vp {
+  width: min(480px, calc(100vw - 28px)); max-width: none;
+  max-height: calc(100dvh - 28px); margin: auto; padding: 0;
+  overflow: auto; overscroll-behavior: contain;
+  border: 1px solid #506cff; border-radius: 20px;
+  background: #040c22; color: #f5f9ff;
+  font-family: Pretendard, "Noto Sans KR", "Malgun Gothic", sans-serif;
+  line-height: 1.5; text-align: center; color-scheme: dark;
+  box-shadow: 0 24px 90px #0009, 0 0 40px #355bff30;
+}
+.vex-vp::backdrop { background: #000b; backdrop-filter: blur(6px); }
+.vex-vp__body {
+  position: relative; overflow: hidden; padding: 24px 28px 26px;
+  background: linear-gradient(135deg, transparent 12%, #13d4ff20 12.3%, transparent 12.6%, transparent 83%, #8656ff40 83.3%, transparent 83.7%), radial-gradient(ellipse at 0 25%, #034a773f, transparent 60%), radial-gradient(ellipse at 100% 55%, #4c168e55, transparent 65%), #040c22;
+}
+.vex-vp button, .vex-vp input, .vex-vp a { -webkit-tap-highlight-color: transparent; }
+.vex-vp button { font: inherit; color: inherit; cursor: pointer; }
+.vex-vp__x { position: absolute; top: 7px; right: 7px; width: 44px; height: 44px; border: 0; background: transparent; font-size: 32px !important; font-weight: 300; }
+.vex-vp__brand { display: grid; justify-items: center; gap: 2px; margin-bottom: 18px; }
+.vex-vp__brand img { display: block; width: 94px; height: 86px; object-fit: contain; }
+.vex-vp__brand > span { color: #90b6ff; letter-spacing: .24em; font-size: 10px; font-weight: 800; }
+.vex-vp__badge { display: inline-block; border: 1px solid #6873d7; border-radius: 30px; padding: 5px 16px; font-size: 10px; letter-spacing: .13em; font-weight: 700; color: #85ddff; background: #061332; }
+.vex-vp h2 { margin: 16px 0 12px; font: 900 clamp(36px, 9vw, 55px)/1.1 Pretendard, "Noto Sans KR", "Malgun Gothic", sans-serif; letter-spacing: -.065em; }
+.vex-vp h2 strong { display: block; margin-top: 3px; font-size: 1.16em; font-weight: 900; background: linear-gradient(100deg, #00ddff 10%, #529bff 55%, #c485ff 95%); background-clip: text; -webkit-background-clip: text; color: transparent; }
+.vex-vp__description { margin: 16px 0 0; }
+.vex-vp__description b { display: block; font-size: clamp(14px, 3.8vw, 18px); letter-spacing: -.045em; }
+.vex-vp__description > span { display: block; margin-top: 3px; color: #b5c9e8; font-size: 13px; }
+.vex-vp__divider { height: 1px; margin: 20px 0 16px; background: linear-gradient(90deg, transparent, #48bcff, #9870ff, transparent); }
+.vex-vp__benefits { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; list-style: none; padding: 0; margin: 0; }
+.vex-vp__benefits li { display: flex; align-items: center; gap: 9px; text-align: left; padding: 10px; border: 1px solid #32548b; background: #07152db3; border-radius: 9px; font-size: 12px; font-weight: 700; letter-spacing: -.04em; }
+.vex-vp__benefits li:nth-child(2), .vex-vp__benefits li:nth-child(3) { border-color: #554595; }
+.vex-vp__benefits li > span { color: #35d7ff; font: 26px/1 sans-serif; width: 26px; flex-shrink: 0; text-align: center; }
+.vex-vp__benefits li:nth-child(2) > span, .vex-vp__benefits li:nth-child(3) > span { color: #ac7aff; }
+.vex-vp__recruit { margin: 16px 0 12px; color: #b2ccf4; font-size: 12px; letter-spacing: .04em; }
+.vex-vp__apply { display: flex; align-items: center; justify-content: center; gap: 15px; min-height: 54px; padding: 10px 12px; border: 1px solid #87caff; border-radius: 10px; background: linear-gradient(110deg, #00b8e5, #2858f8 55%, #883bfa); color: white; text-decoration: none; font-size: 18px; font-weight: 800; box-shadow: 0 0 18px #315fff45; transition: filter .15s; }
+.vex-vp__apply:hover { filter: brightness(1.15); }
+.vex-vp__apply > span[aria-hidden] { font-size: 26px; }
+.vex-vp__footer { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 7px 18px; border-top: 1px solid #26334c; background: #0a1120; font-size: 12px; color: #b8c3d7; }
+.vex-vp__footer label { display: flex; align-items: center; gap: 8px; min-height: 44px; cursor: pointer; }
+.vex-vp__footer input { width: 17px; height: 17px; margin: 0; accent-color: #6584ff; }
+.vex-vp__footer button { min-width: 44px; min-height: 44px; padding: 0 6px; border: 0; background: transparent; }
+.vex-vp :focus-visible { outline: 2px solid #9feaff; outline-offset: 3px; }
+.vex-vp__sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+@media (max-width: 380px) {
+  .vex-vp__body { padding: 22px 16px; }
+  .vex-vp__benefits li { padding: 9px 6px; gap: 5px; font-size: 11px; }
+  .vex-vp__apply { font-size: 16px; }
+}
+@media (max-height: 720px) {
+  .vex-vp__brand img { width: 68px; height: 60px; }
+  .vex-vp__brand { margin-bottom: 10px; }
+  .vex-vp__body { padding-top: 16px; }
+}
+
+/* 팝업 진입: 살짝 올라오며 나타나기 */
+.vex-vp[open] {
+  animation: vex-vp-enter 420ms cubic-bezier(.22, 1, .36, 1) both;
+}
+.vex-vp[open]::backdrop {
+  animation: vex-vp-backdrop-enter 360ms ease-out both;
+}
+@keyframes vex-vp-enter {
+  from { opacity: 0; transform: translateY(22px) scale(.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes vex-vp-backdrop-enter {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vex-vp[open], .vex-vp[open]::backdrop { animation: none; }
+}
+
+/* 효과 확인용: 확인 후 강제 적용을 제거하고 시간을 조정하세요. */
+.vex-vp[open] {
+  animation: vex-vp-enter 1.2s cubic-bezier(.22, 1, .36, 1) both !important;
+}
+.vex-vp[open]::backdrop {
+  animation: vex-vp-backdrop-enter 1.2s ease-out both !important;
+}
+
+/* 인스타그램 상세 게시물 */
+.vex-vp__details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  min-height: 48px;
+  margin-top: 10px;
+  padding: 10px 16px;
+  border: 1px solid #ad82ff;
+  border-radius: 10px;
+  background: linear-gradient(110deg, #091830, #11142c);
+  box-shadow: inset 0 0 0 1px #b384ff18;
+  color: #f2eeff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 750;
+  line-height: 1.4;
+  transition: background .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+.vex-vp__details:visited { color: #f2eeff; }
+.vex-vp__details:hover {
+  border-color: #d1b5ff;
+  background: linear-gradient(110deg, #122649, #281b48);
+  box-shadow: 0 0 18px #9865ff35, inset 0 0 0 1px #cba7ff22;
+}
+.vex-vp__instagram { width: 23px; height: 23px; flex-shrink: 0; }
+.vex-vp__details-divider { width: 1px; height: 20px; background: #9673ce; margin: 0 3px; }
+.vex-vp__external { width: 19px; height: 19px; flex-shrink: 0; }
+@media (max-width: 380px) {
+  .vex-vp__details { font-size: 15px; gap: 10px; }
+}
+
+/* 모바일: 카드 폭과 내부 간격을 줄인 컴팩트 레이아웃 */
+@media (max-width: 640px) {
+  .vex-vp {
+    width: min(340px, calc(100vw - 40px));
+    max-height: calc(100dvh - 40px);
+    border-radius: 16px;
+  }
+  .vex-vp__body { padding: 16px 16px 14px; }
+  .vex-vp__x { top: 2px; right: 2px; font-size: 28px !important; }
+  .vex-vp__brand { gap: 0; margin-bottom: 10px; }
+  .vex-vp__brand img { width: 60px; height: 54px; }
+  .vex-vp__brand > span { font-size: 9px; letter-spacing: .18em; }
+  .vex-vp__badge { padding: 4px 10px; font-size: 9px; letter-spacing: .06em; }
+  .vex-vp h2 { margin: 12px 0 8px; font-size: clamp(30px, 9vw, 38px); }
+  .vex-vp h2 strong { margin-top: 2px; font-size: 1.12em; }
+  .vex-vp__description { margin-top: 10px; }
+  .vex-vp__description b { font-size: 14px; }
+  .vex-vp__description > span { font-size: 11px; margin-top: 2px; }
+  .vex-vp__divider { margin: 12px 0; }
+  .vex-vp__benefits { gap: 6px; }
+  .vex-vp__benefits li { min-width: 0; padding: 8px 6px; gap: 5px; font-size: 10px; border-radius: 7px; word-break: keep-all; }
+  .vex-vp__benefits li > span { width: 20px; font-size: 21px; }
+  .vex-vp__recruit { margin: 11px 0 9px; font-size: 10px; letter-spacing: 0; }
+  .vex-vp__apply { min-height: 46px; padding: 8px; font-size: 15px; gap: 10px; border-radius: 8px; }
+  .vex-vp__apply > span[aria-hidden] { font-size: 22px; }
+  .vex-vp__details { min-height: 44px; margin-top: 8px; padding: 8px; font-size: 14px; gap: 10px; border-radius: 8px; }
+  .vex-vp__instagram { width: 20px; height: 20px; }
+  .vex-vp__external { width: 17px; height: 17px; }
+  .vex-vp__details-divider { height: 17px; }
+  .vex-vp__footer { padding: 2px 12px; font-size: 11px; }
+}

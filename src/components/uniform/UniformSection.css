@@ -1,4 +1,5 @@
 .uniform-section {
+  box-sizing: border-box;
   width: 100%;
   padding: 110px 20px 90px;
   background:
@@ -45,7 +46,9 @@
 
 .uniform-image-wrap {
   position: relative;
-  width: fit-content;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 560px;
   margin: 0 auto;
   border-radius: 24px;
   overflow: hidden;
@@ -121,7 +124,7 @@
 .uniform-image {
   display: block;
   width: 100%;
-  max-width: 1050px;
+  max-width: 100%;
   height: auto;
   border-radius: 24px;
 }
@@ -275,13 +278,12 @@
   }
 }
 
-@media (max-width: 1200px) {
-  .uniform-image {
-    max-width: 960px;
-  }
-}
-
 @media (max-width: 768px) {
+  .uniform-image-wrap {
+    width: 100%;
+    max-width: 320px;
+  }
+
   .uniform-section {
     padding: 90px 16px 72px;
   }
