@@ -1,3 +1,4 @@
+import Streamers from "./Streamers"
 import "./Partners.css"
 import { useEffect, useRef, useState } from "react"
 import partnersData from "../../data/partnersData"
@@ -101,7 +102,7 @@ function Partners() {
       <section id="partners" className="partners">
         <div className="partners__header">
           <h2 className="partners__title">PARTNERS</h2>
-          <p className="partners__desc">함께하는 파트너</p>
+          <p className="partners__desc">VEX와 함께하는 스폰서와 스트리머</p>
         </div>
 
         <div
@@ -130,6 +131,7 @@ function Partners() {
             )}
           </div>
         </div>
+        <Streamers />
       </section>
 
       <PartnerModal partner={selectedPartner} onClose={closePartnerModal} />
