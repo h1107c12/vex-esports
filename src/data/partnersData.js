@@ -52,8 +52,8 @@ const partnersData = [
   {
     id: 3,
     logo: p3,
-    name: "ENP Games",
-    website: "https://enpgames.co.kr",
+    name: "후메이드디스 (WHO MADE THIS)",
+    website: "https://smartstore.naver.com/whomadethis/category/33yXHi5W1ge4iB2QWSTyG_ALL_PRODUCT?cp=1",
     layout: "center",
     hideTopLogo: true,
     heroLink: true,
@@ -62,7 +62,7 @@ const partnersData = [
     details: [
       {
         image: detail3,
-        text: `이엔피게임즈는 지친 일상을 잠시 잊고, 편하게 즐길 수 있는 다양한 게임을 개발, 서비스하고 있습니다.`,
+        text: `후메이드디스(WHO MADE THIS)는 게이밍 마우스패드와 게이밍기어를 선보이는 브랜드입니다.`,
       },
     ],
   },
