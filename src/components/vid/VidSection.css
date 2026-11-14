@@ -372,3 +372,49 @@
     padding: 14px;
   }
 }
+/* 영상이 많아져도 카드 크기를 유지하고 가로로 스크롤 */
+.vid-section .vid-list {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 16px;
+  width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  padding: 12px 4px 20px;
+  scroll-snap-type: x proximity;
+}
+
+.vid-section .vid-card {
+  flex: 0 0 220px;
+  min-width: 220px;
+  scroll-snap-align: start;
+}
+
+.vid-section .vid-card__button {
+  box-sizing: border-box;
+}
+
+.vid-section .vid-card__info h3,
+.vid-section .vid-preview__info h3 {
+  overflow-wrap: anywhere;
+}
+
+.vid-section .vid-card__info p,
+.vid-section .vid-preview__info p {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  overflow-wrap: anywhere;
+}
+
+.vid-section .vid-card__video img {
+  object-fit: contain;
+}
+
+@media (max-width: 640px) {
+  .vid-section .vid-card {
+    flex-basis: 180px;
+    min-width: 180px;
+  }
+}
