@@ -13,11 +13,11 @@ export default function VidSection() {
     videoId: "",
   })
 
-  const fetchVideos = async () => {
+   const fetchVideos = async () => {
     const { data, error } = await supabase
       .from("videos")
       .select("*")
-      .order("title", { ascending: true })
+      .order("created_at", { ascending: false, nullsFirst: false })
 
     if (error) {
       console.error(error)
@@ -25,13 +25,9 @@ export default function VidSection() {
     }
 
     setVideos(data || [])
-
-    if (data?.length) {
-    const randomIndex = Math.floor(Math.random() * data.length)
-    setSelectedVideo(data[randomIndex])
+    setSelectedVideo(data?.[0] ?? null)
   }
-  }
-
+  
   useEffect(() => {
     fetchVideos()
   }, [])
