@@ -1,6 +1,7 @@
 import "./UniformSection.css"
 import uniformBanner from "../../assets/uniform/uniform-banner.png"
-import { FaDiscord } from "react-icons/fa"
+import { FaDiscord, FaInstagram } from "react-icons/fa"
+import { SiKakaotalk } from "react-icons/si"
 import {
   UNIFORM_ORDER_URL,
   DISCORD_CONSULT_URL,
@@ -25,7 +26,7 @@ export default function UniformSection() {
           />
         </div>
 
-        <div className="uniform-btn-wrap">
+        <div className="uniform-purchase-actions">
           <a
             href={UNIFORM_ORDER_URL}
             target="_blank"
@@ -33,22 +34,47 @@ export default function UniformSection() {
             className="uniform-consult-btn uniform-order-btn"
           >
             <span className="uniform-consult-text">
-              유니폼 바로 구매하기
+              유니폼 구매 신청
             </span>
           </a>
 
-          <a
-            href={DISCORD_CONSULT_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="uniform-consult-btn"
-          >
-            <span className="uniform-consult-btn__shine" />
-            <FaDiscord className="uniform-consult-icon" />
-            <span className="uniform-consult-text">
-              디스코드 구매 상담
-            </span>
-          </a>
+          <div className="uniform-contact">
+            <p className="uniform-contact__label">
+              구매 문의
+            </p>
+
+            <div className="uniform-contact__links">
+              <a
+                href="https://open.kakao.com/o/smAEavei"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="uniform-contact__button"
+              >
+                <SiKakaotalk aria-hidden="true" />
+                <span>카카오톡</span>
+              </a>
+
+              <a
+                href="https://www.instagram.com/vexesports_official?dlrf=MTM2bjBlMXA2eDF3cQ=="
+                target="_blank"
+                rel="noopener noreferrer"
+                className="uniform-contact__button"
+              >
+                <FaInstagram aria-hidden="true" />
+                <span>Instagram</span>
+              </a>
+
+              <a
+                href={DISCORD_CONSULT_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="uniform-contact__button"
+              >
+                <FaDiscord aria-hidden="true" />
+                <span>디스코드</span>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </section>

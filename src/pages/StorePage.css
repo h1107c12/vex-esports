@@ -250,3 +250,44 @@
     padding: 12px;
   }
 }
+/* 구매 버튼 아래 작은 문의 버튼 */
+.vex-store__contact {
+  margin-top: 22px;
+}
+
+.vex-store .vex-store__contact-label {
+  margin: 0 0 10px;
+  color: #aab8d0;
+  font-size: 13px;
+}
+
+.vex-store__contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.vex-store .vex-store__contact-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  flex: 1 1 100px;
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid #46516d;
+  border-radius: 10px;
+  background: #10192b;
+  color: #e2e9f8;
+  font-size: 13px;
+  text-align: center;
+  text-decoration: none;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.vex-store .vex-store__contact-links a:hover {
+  border-color: #9c9aff;
+  background: #1b2440;
+}
