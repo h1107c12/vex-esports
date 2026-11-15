@@ -268,3 +268,39 @@
     padding: 3px 1px;
   }
 }
+/* STORE 추가에 따른 메뉴 간격 조정 */
+.header__inner {
+  box-sizing: border-box;
+}
+
+.header__nav {
+  gap: clamp(12px, 2.5vw, 34px);
+}
+
+.header__link {
+  white-space: nowrap;
+}
+
+@media (min-width: 641px) and (max-width: 1100px) {
+  .header__nav {
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .header__link {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 640px) {
+  .header__nav {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 2px;
+  }
+
+  .header__link {
+    font-size: 8px;
+    letter-spacing: 0;
+  }
+}
