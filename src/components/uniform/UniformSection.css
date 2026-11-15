@@ -317,3 +317,17 @@
     font-size: 16px;
   }
 }
+/* 유니폼 구매 / 상담 버튼 */
+.uniform-btn-wrap {
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.uniform-order-btn {
+  background: linear-gradient(90deg, #008aaf, #6250c7);
+}
+
+.uniform-consult-btn:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 5px;
+}
