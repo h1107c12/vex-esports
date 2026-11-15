@@ -88,9 +88,8 @@ function Partners() {
     isHoveringRef.current = false
   }
 
-   const openPartnerModal = (partner) => {
-    if (!partner.website) return
-    window.open(partner.website, "_blank", "noopener,noreferrer")
+     const openPartnerModal = (partner) => {
+    setSelectedPartner(partner)
   }
 
   const closePartnerModal = () => {
