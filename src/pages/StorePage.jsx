@@ -81,14 +81,37 @@ export default function StorePage() {
                   유니폼 구매 신청 ↗
                 </a>
 
-                <a
-                  className="vex-store__secondary"
-                  href={DISCORD_CONSULT_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  디스코드 구매 상담 ↗
-                </a>
+                                <div className="vex-store__contact">
+                  <p className="vex-store__contact-label">
+                    구매 문의
+                  </p>
+
+                  <div className="vex-store__contact-links">
+                    <a
+                      href="https://open.kakao.com/o/smAEavei"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      카카오톡
+                    </a>
+
+                    <a
+                      href="https://www.instagram.com/vexesports_official?dlrf=MTM2bjBlMXA2eDF3cQ=="
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Instagram
+                    </a>
+
+                    <a
+                      href={DISCORD_CONSULT_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      디스코드
+                    </a>
+                  </div>
+                </div>
 
                 <p className="vex-store__small">
                   현재 구매 신청은 구글 폼에서 진행됩니다.
