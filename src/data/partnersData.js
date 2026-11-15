@@ -88,7 +88,7 @@ const partnersData = [
     id: 5,
     logo: p5,
     name: "Partner 5",
-    website: "https://www.42dacom.co.kr/",
+    website: "https://www.42dacom.co.kr/?NaPm=ct%3Dmw37e30j%7Cci%3Dcheckout%7Ctr%3Dds%7Ctrx%3Dnull%7Chk%3De85a39d6c59c2b874dd030d959c7545a1d7a99c9",
     logoWidth: 190,
     logoHeight: 154,
     details: [
@@ -124,7 +124,7 @@ const partnersData = [
     id: 7,
     logo: p7,
     name: "Partner 7",
-    website: "https://www.vaxee.co/kr/",
+    website: "https://www.vaxee.co/kr/esports",
     layout: "visualOnly",
     hideTopLogo: true,
     heroLink: true,
@@ -141,7 +141,7 @@ const partnersData = [
     id: 8,
     logo: p8,
     name: "Partner 8",
-    website: "https://www.ovenmaru.com/",
+    website: "https://ovenmaru.com/",
     logoWidth: 290,
     logoHeight: 120,
     details: [
