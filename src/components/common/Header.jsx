@@ -12,6 +12,7 @@ const menus = [
     mobileLabel: "ACADEMY",
     href: "https://vex-academy.vercel.app/",
   },
+  { label: "STORE", mobileLabel: "STORE", href: "#/store" },
   { label: "VIDEO", mobileLabel: "VIDEO", id: "vid" },
   { label: "News & Events", mobileLabel: "News", id: "news" },
 ]
