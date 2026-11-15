@@ -124,13 +124,21 @@ function HeroSection() {
           alt="VEX Esports"
         />
 
-        <a
-  href="https://vex-academy.vercel.app/"
-  rel="noopener noreferrer"
-  className="hero__academy-button"
->
-  아카데미로 이동
-</a>
+                <div className="hero__actions">
+          <a
+            href="https://vex-academy.vercel.app/"
+            className="hero__academy-button"
+          >
+            아카데미로 이동
+          </a>
+
+          <a
+            href="#/store"
+            className="hero__academy-button hero__store-button"
+          >
+            스토어로 이동
+          </a>
+        </div>
       </div>
     </section>
     </>
