@@ -214,10 +214,22 @@ function PartnerModal({ partner, onClose }) {
               </div>
             ))}
           </div>
+              )}
+
+        {partner.website && (
+          <div className="partner-modal__actions">
+            <a
+              href={partner.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="partner-modal__website-button"
+            >
+              기업 바로가기 ↗
+            </a>
+          </div>
         )}
       </div>
     </div>
   )
 }
-
 export default PartnerModal
